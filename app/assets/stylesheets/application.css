@@ -1,0 +1,42 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ *= require jquery.ui.dialog
+ */
+
+body {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+}
+
+#container {
+	position: relative;
+	width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: left;
+	background-color: #DDDDDD;
+	/* Ich verstehe es nicht. */
+	padding-top: 1px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 15px;
+	border-radius: 10px;
+}
+
+#recreate_confirm {
+	display: none;
+}

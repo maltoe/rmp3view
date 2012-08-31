@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rmp3view</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+<div id="container">
+
+	<%= yield %>
+
+</div>
+
+<footer>
+	<a href="#" id="recreate_overlay_show">Re-create media database.</a>
+</footer>
+
+<div id="recreate_confirm" title="Re-create the media database?">
+	<p>
+		<span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+		Re-creating the media database will take a while. Are you sure?
+	</p>
+</div>
+
+</body>
+</html>

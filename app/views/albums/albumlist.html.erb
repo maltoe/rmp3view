@@ -1,0 +1,17 @@
+<% @albums.each do |album| %>
+  <div class="album_item">
+    
+    <div class="album_item_thumbnail_container">
+      <img class="album_item_thumbnail" src=<%= url_for(:controller => "covers", :action => "thumbnail", :id => album.id) %><br />
+      <div class="album_item_add_overlay">
+        <img class="album_item_add_button" src="/play.png" data-albumid="<%= album.id %>"/>
+      </div>
+    </div>
+
+    <div class="album_item_text">
+      <div class="album_item_artist"><%= album.artist %></div>
+      <div class="album_item_title"><%= album.title %></div>
+    </div>
+
+  </div>
+<% end %>

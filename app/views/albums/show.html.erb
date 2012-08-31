@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+	<%= @album.artist %><br/>
+	<%= @album.title %><br/> 
+</h1>
+
+<img src="<%= url_for(:controller => "covers", :action => "thumbnail", :id => @album.id) %>" />
+
+<ul>
+<% @tracks.each do |track| %>
+	<li>(<%= track.number %>) <%= track.title %></li>
+<% end %>
+</ul>
+
+<%= link_to 'Back', :back %>

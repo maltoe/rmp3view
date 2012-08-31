@@ -1,0 +1,21 @@
+
+<div id="player">
+	<h1>The Player</h1>
+</div>
+
+<div id="medialib_container">
+	<div id="searchbar">
+		<%= form_tag("/albums/searchByArtist", { :remote => "true", :id => "search_artist" }) do %>
+		  <%= label_tag(:artist, "Search for artist:") %>
+		  <%= text_field_tag(:artist) %>
+		  <%= submit_tag("Search") %>
+		<% end %>
+		<%=  form_tag("/albums/random?limit=50", { :remote => "true", :id => "search_random" }) do %>
+			<%= submit_tag("Random Fifty!") %>
+		<% end%>
+	</div>
+	<div id="tagcloud_container">
+		<div id="tagcloud"></div>
+	</div>
+	<div id="albumlist"></div>
+</div>
