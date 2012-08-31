@@ -41,7 +41,7 @@ function album_query_complete(status, data) {
 		albumlist_update(data.responseText);
 
 		// Refresh jScrollPane.
-		$("#albumlist_scrollpane").data("jsp").reinitialise();
+		$("#albumlist_scrollpane").data("jsp").reinitialise({"mouseWheelSpeed": 40});
 	}
 }
 
