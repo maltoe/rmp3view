@@ -1,4 +1,6 @@
 //= require jqcloud
+//= require jquery.jscrollpane
+//= require jquery.mousewheel
 
 $(document).ready(function() {
 	$.get('/tags/toptags', function(data, status) {
@@ -27,6 +29,9 @@ $(document).ready(function() {
 	
 	$("#search_artist").bind("ajax:complete", album_query_complete);
 	$("#search_random").bind("ajax:complete", album_query_complete);
+
+	console.log("SCROLLPANE");
+	$("#albumlist_scrollpane").jScrollPane();
 });
 
 function album_query_complete(status, data) {
@@ -34,6 +39,9 @@ function album_query_complete(status, data) {
 		$("#albumlist").html("Error while fetching albums.");
 	else {
 		albumlist_update(data.responseText);
+
+		// Refresh jScrollPane.
+		$("#albumlist_scrollpane").data("jsp").reinitialise();
 	}
 }
 
@@ -44,7 +52,7 @@ function albumlist_update(data) {
 		var albumid = $(this).data("albumid");
 
 		$(this).parent().parent().parent().addClass("album_added");
-
+		
 		// Stop propagation, we don't want to show this now.
 		e.stopPropagation();
 	});

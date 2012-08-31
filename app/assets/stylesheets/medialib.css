@@ -1,5 +1,6 @@
 /*
  *= require jqcloud-custom
+ *= require jquery.jscrollpane
  */
 
 #medialib_container {
@@ -25,6 +26,12 @@
 #tagcloud {
 	width: 100%;
 	height: 180px;
+}
+
+#albumlist_scrollpane {
+	height: 550px;
+	/* jScrollPane draws a weird border after anything was clicked inside. */
+	outline: none;
 }
 
 #albumlist {
