@@ -1,4 +1,6 @@
 class TagsController < ApplicationController
+	
+	# GET /tags/toptags
 	def toptags
 		@tags = Tag.all(:select => 'tag, sum(number) as number', 
 										:having => 'sum(number) >= 1000', 

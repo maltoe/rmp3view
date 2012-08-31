@@ -13,28 +13,60 @@
  *= require jquery.ui.dialog
  */
 
+html {
+  height:100%;
+}
+
 body {
-	position: relative;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+  height:100%;
+	font-size:100%;
+	margin:0;
+	padding:0;
+}
+
+footer {
+	/*margin-top: 20px;*/
 	text-align: center;
 }
 
-#container {
+#frame {
+  height:95%;
+	position:relative;
+	overflow: hidden;
+}
+
+#framecontainer {
+  -webkit-transition: left 1s ease-in-out;
+  height:100%;
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+.page {
+	overflow: hidden;
+	width:960px;
+	height:850px;
+	float:left;
 	position: relative;
-	width: 960px;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: left;
+	margin-top: 60px;
+	margin-right: 50px;
+	margin-left: 50px;
+
 	background-color: #DDDDDD;
-	/* Ich verstehe es nicht. */
+	/* Ich verstehe es nicht. 
 	padding-top: 1px;
 	padding-left: 15px;
 	padding-right: 15px;
-	padding-bottom: 15px;
+	padding-bottom: 15px;*/
+	padding: 15px;
 	border-radius: 10px;
+}
+
+.container {
+	width: 100%;
+	height: 100%;
+	position: relative;
 }
 
 #recreate_confirm {

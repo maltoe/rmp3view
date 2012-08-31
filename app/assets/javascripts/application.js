@@ -15,8 +15,40 @@
 //= require jquery.ui.dialog
 //= require_tree .
 
+var App = {
+	pages:   null,
+	current: 0
+};
+
 $(document).ready(function() {
-	$("#recreate_overlay_show").click(function() {
+
+
+	// Set up views.
+	App.pages = $('.page');
+  var frame = $('#frame');
+  var framecontainer = $('#framecontainer');
+  var slidesize = $(App.pages[0]).outerWidth(true);
+  framecontainer.css('width', slidesize * App.pages.length + "px");
+
+  // Slide to page index
+  App.slideTo = function(index) {
+    // Jump to index
+    index = parseInt(index);
+    if(App.pages[index]){
+    	var center_offset = (frame.width() - slidesize) / 2;
+	    framecontainer.css('left', index * slidesize * -1 + center_offset);
+	    App.current = index;
+    }
+  };
+
+	// Run init function.
+	$(window).bind('load', function(){
+		//slidesize = framecontainer.width() / App.pages.length;
+		App.slideTo(App.current);
+	});
+
+  // Event handler.
+  $("#recreate_overlay_show").click(function() {
 		$( "#recreate_confirm" ).dialog({
 			resizable: false,
 			height: 240,
@@ -32,4 +64,8 @@ $(document).ready(function() {
 			}
 		});
 	});
+
+  App.pages.click(function() {
+  	App.slideTo($(this).data("page"));
+  });
 });

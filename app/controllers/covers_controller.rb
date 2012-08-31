@@ -1,6 +1,7 @@
 require 'base64'
 
 class CoversController < ApplicationController
+    # GET /covers/show/:id
     def show
         path = Album.find(params[:id])[:cover]
 
@@ -11,6 +12,7 @@ class CoversController < ApplicationController
         end
     end
 
+    # GET /covers/thumbnail/:id
     def thumbnail
         tn = Thumbnail.find_by_albumid params[:id]
 
@@ -20,14 +22,4 @@ class CoversController < ApplicationController
             send_data Base64.decode64(tn.data), :type => "image/jpeg", :disposition => "inline"
         end
     end
-
-=begin
-    render :text => @tn.data
-	private
-
-	def to_imgsrc data
-		"data:image/jpeg;base64," + data
-	end
-
-=end
 end

@@ -10,9 +10,9 @@ Rmp3view::Application.routes.draw do
   match '/covers/:id' => 'covers#show'
   match '/covers/thumbnail/:id' => 'covers#thumbnail'
 
-  match '/player/recreate' => 'player#recreate'
+  match '/recreate' => 'application#recreate'
 
-  root :to => 'player#index'
+  root :to => 'application#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
