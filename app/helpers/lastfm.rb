@@ -1,7 +1,7 @@
 require 'httparty'
 
 module Lastfm
-	def self.album_toptags artist, album
+	def self.album_toptags artist, album, limit
 		options = { :query =>
 			{
 				"artist" => artist,
@@ -26,7 +26,7 @@ module Lastfm
 			tags.each do |tag|
 				res << { :tag => tag["name"], :number => tag["count"] }
 				count += 1
-				break if count == Rmp3view::Application.config.lastfm_toptags
+				break if count == limit
 			end
 		end
 

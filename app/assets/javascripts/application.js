@@ -22,7 +22,6 @@ var App = {
 
 $(document).ready(function() {
 
-
 	// Set up views.
 	App.pages = $('.page');
   var frame = $('#frame');
@@ -43,7 +42,6 @@ $(document).ready(function() {
 
 	// Run init function.
 	$(window).bind('load', function(){
-		//slidesize = framecontainer.width() / App.pages.length;
 		App.slideTo(App.current);
 	});
 
@@ -51,12 +49,16 @@ $(document).ready(function() {
   $("#recreate_overlay_show").click(function() {
 		$( "#recreate_confirm" ).dialog({
 			resizable: false,
-			height: 240,
+			height: 210,
+			width: 450,
 			modal: true,
 			buttons: {
 				"Yep, I'm sure!": function() {
-					alert("Missing.")
+					$("#recreation_overlay").fadeIn();
 					$(this).dialog("close");
+					$.get("/recreate", function() {
+						$("#recreation_overlay").fadeOut();
+					});
 				},
 				Cancel: function() {
 					$(this).dialog("close");

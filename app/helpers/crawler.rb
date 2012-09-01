@@ -4,9 +4,11 @@ require 'find'
 require 'base64'
 
 module Crawler
-	def self.crawl! basedir
+	def self.crawl!
+		basedir = Rmp3view::Application.config.crawler[:basedir]
 		basedir += "/" unless basedir.end_with? "/"
-		return false unless File.directory? basedir
+
+		raise "Crawler basedir is not a directory." unless File.directory? basedir
 
 		puts "Clearing old database..."
 		Album.delete_all
@@ -72,9 +74,10 @@ module Crawler
 					next
 				end
 
+=begin
 				# Create thumbnail for cover.
 				if cover
-					tbsize = Rmp3view::Application.config.thumbnail_size
+					tbsize = Rmp3view::Application.config.crawler[:thumbnail_size]
 					image = Magick::Image.read(cover).first
 					image.thumbnail! tbsize, tbsize
 					data = Base64.encode64(image.to_blob)
@@ -85,7 +88,7 @@ module Crawler
 				end
 
 				# Load tags from last.fm
-				toptags = Lastfm.album_toptags(artist, title)
+				toptags = Lastfm.album_toptags artist, title, Rmp3view::Application.config.crawler[:lastfm_toptags]
 				toptags.each do |tag|
 					t = Tag.new :albumid => record.id, :tag => tag[:tag], :number => tag[:number]
 					unless t.save
@@ -93,6 +96,7 @@ module Crawler
 						break
 					end
 				end
+=end
 
 				# In the album folder, files are called like "01" - "Interpret" - "Title".mp3.
 				# Yet sometimes, they are also stored in subdirectories "CD1", "CD2" and the like.

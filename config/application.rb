@@ -58,11 +58,5 @@ module Rmp3view
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-
-    # How many top tags should be stored for each album.
-    config.lastfm_toptags = 12
-
-    # Side length of a thumbnail.
-    config.thumbnail_size = 150
   end
 end
