@@ -6,7 +6,7 @@ class CoversController < ApplicationController
         path = Album.find(params[:id])[:cover]
 
         unless path
-            redirect_to "/nocover.jpg"
+            redirect_to "/nocover.png"
         else
             send_data open(path, "rb").read, :type => "image/jpeg", :disposition => "inline"
         end
@@ -17,7 +17,7 @@ class CoversController < ApplicationController
         tn = Thumbnail.find_by_albumid params[:id]
 
         unless tn
-            redirect_to "/nocover.jpg"
+            redirect_to "/nocover.png"
         else
             send_data Base64.decode64(tn.data), :type => "image/jpeg", :disposition => "inline"
         end
