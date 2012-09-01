@@ -74,7 +74,6 @@ module Crawler
 					next
 				end
 
-=begin
 				# Create thumbnail for cover.
 				if cover
 					tbsize = Rmp3view::Application.config.crawler[:thumbnail_size]
@@ -96,7 +95,6 @@ module Crawler
 						break
 					end
 				end
-=end
 
 				# In the album folder, files are called like "01" - "Interpret" - "Title".mp3.
 				# Yet sometimes, they are also stored in subdirectories "CD1", "CD2" and the like.
