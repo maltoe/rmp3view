@@ -38,7 +38,7 @@ var App = {
 
   slidePrev: function() {
     var target = this.current - 1;
-    if(target >= 0);
+    if(target >= 0)
       this.slideTo(target);
   },
 
@@ -49,7 +49,7 @@ var App = {
   },
 
   init: function() {
-    this.pages = $('.page')
+    this.pages = $('.page');
     this.frame = $('#frame');
     this.framecontainer = $('#framecontainer');
     this.slidesize = $(this.pages[0]).outerWidth(true);
