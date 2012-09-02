@@ -36,7 +36,7 @@ footer {
 }
 
 #framecontainer {
-  -webkit-transition: left 1s ease-in-out;
+  -webkit-transition: left 0.6s ease-in-out;
   height:100%;
 	position:absolute;
 	top:0;
