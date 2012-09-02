@@ -12,6 +12,12 @@
 	<div id="tagcloud_container">
 		<div id="tagcloud"></div>
 	</div>
+	<div id="letterbar">
+		<%= link_to "123", { :controller => "medialib", :action => "search", :letter => "123" }, :remote => true %>
+		<% ('A'..'Z').each do |letter| %>
+			<%= link_to letter, { :controller => "medialib", :action => "search", :letter => letter }, :remote => true %>
+		<% end %>
+	</div>
 	<div id="albumlist_scrollpane" class="scroll-pane">
 		<div id="albumlist"></div>
 	</div>

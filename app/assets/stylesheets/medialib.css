@@ -20,7 +20,7 @@
 }
 
 #tagcloud_container {
-	padding: 30px;
+	padding: 10px;
 }
 
 #tagcloud {
@@ -28,14 +28,27 @@
 	height: 180px;
 }
 
+#letterbar {
+	width: 100%;
+	text-align: center;
+}
+
+#letterbar a {
+	font-size: 140%;
+	color: #0D0;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+
 #albumlist_scrollpane {
-	height: 550px;
+	margin-top: 5px;
+	height: 575px;
 	/* jScrollPane draws a weird border after anything was clicked inside. */
 	outline: none;
 }
 
 #albumlist {
-	margin-top: 5px;
 	-webkit-column-count: 4;
 	-webkit-column-gap: 20px;
 	padding: 5px;
