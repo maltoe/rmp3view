@@ -100,6 +100,7 @@ module Crawler
 
 			puts "Loading album tags from Last.FM..."
 			Album.all.each do |album|
+				puts album.id
 				toptags = Lastfm.album_toptags album.artist, album.title, lastfm_toptags
 				toptags.each do |tag|
 					t = Tag.new :albumid => album.id, :tag => tag[:tag], :number => tag[:number]
