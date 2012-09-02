@@ -22,7 +22,7 @@ module Crawler
 			when :idle
 				clear!
 				@current_phase = :cleared
-				retval = { message: "Deleted database content.", :done => false }
+				retval = { message: "Deleted database contents.", :done => false }
 			when :cleared
 				count = crawl!
 				@current_phase = :crawled
@@ -62,6 +62,7 @@ module Crawler
 			basedir = Rmp3view::Application.config.crawler[:basedir]
 			album_rules = Rmp3view::Application.config.crawler[:album_rules]
 			cover_file = Rmp3view::Application.config.crawler[:cover_file]
+			count = 0
 
 			puts "Crawling #{basedir} for albums..."
 			recursive_match basedir, album_rules do |album|
@@ -73,9 +74,12 @@ module Crawler
 				album = Album.new album
 				unless album.save
 					puts "Error: #{album.error}"
-					next
+				else
+					count += 1
 				end
 			end
+
+			count
 		end
 
 		def thumbnail!
@@ -96,17 +100,30 @@ module Crawler
 		end
 
 		def tag!
-			lastfm_toptags = Rmp3view::Application.config.crawler[:lastfm_toptags]
-
 			puts "Loading album tags from Last.FM..."
-			Album.all.each do |album|
-				puts album.id
-				toptags = Lastfm.album_toptags album.artist, album.title, lastfm_toptags
-				toptags.each do |tag|
-					t = Tag.new :albumid => album.id, :tag => tag[:tag], :number => tag[:number]
-					unless t.save
-						puts "Error: #{t.error}"
+			failures = tag_helper Album.all
+
+			puts "Failed to load tags for several albums. Retrying now..."
+			failures = tag_helper failures
+
+			puts "Could not load tags for:"
+			failures.each { |album|	puts "#{album.artist} - #{album.title}" }
+		end
+
+		def tag_helper albums
+			lastfm_toptags = Rmp3view::Application.config.crawler[:lastfm_toptags]			
+			failures = []
+			albums.each do |album|
+				begin
+					toptags = Lastfm.album_toptags album.artist, album.title, lastfm_toptags
+					toptags.each do |tag|
+						t = Tag.new :albumid => album.id, :tag => tag[:tag], :number => tag[:number]
+						unless t.save
+							puts "Error: #{t.error}"
+						end
 					end
+				rescue LastFmError
+					failures << album
 				end
 			end
 		end

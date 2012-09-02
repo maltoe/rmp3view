@@ -1,6 +1,10 @@
 require 'httparty'
 
 module Lastfm
+	class LastFmError < RuntimeError
+
+	end
+
 	def self.album_toptags artist, album, limit
 		options = { :query =>
 			{
@@ -14,8 +18,9 @@ module Lastfm
 		begin
 			response = HTTParty.get('http://ws.audioscrobbler.com/2.0/?method=album.gettoptags', options)
 		rescue Timeout::Error
-			puts "Timeout error while fetching lastfm tags for #{artist} - #{album}!"
-			return []
+			raise LastFmError, "Timeout error while fetching lastfm tags for #{artist} - #{album}!"
+		rescue EOFError
+			raise LastFmError, "EOFError while fetching lastfm tags for #{artist} - #{album}!"
 		end
 
 		res = []
