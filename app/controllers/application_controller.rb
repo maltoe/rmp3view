@@ -8,10 +8,7 @@ class ApplicationController < ActionController::Base
 
   # GET /recreate
 	def recreate
-		if Crawler::crawl!
-			head :ok
-		else
-			head :bad_request
-		end
+		Crawler::crawl!
+		head :ok
 	end
 end
