@@ -122,10 +122,13 @@ module Crawler
 							puts "Error: #{t.error}"
 						end
 					end
-				rescue LastFmError
+				rescue LastFmError => err
+					puts err
 					failures << album
 				end
 			end
+
+			failures
 		end
 
 		def tracks!
