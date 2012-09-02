@@ -1,5 +1,6 @@
 #playlist_scrollpane {
-	height: 840px;
+	margin: 20px;
+	height: 800px;
 	outline: none;
 }
 
@@ -11,7 +12,13 @@
 	width: 95%;
 	outline: 3px groove #ffffff;
 	overflow: hidden;
-	margin: 20px;
+	margin-top: 2px;
+	margin-bottom: 20px;
+	margin-left: 10px;
+}
+
+.playlist_item:last-child {
+	margin-bottom: 2px;
 }
 
 .playlist_item:nth-child(even) {
@@ -33,6 +40,8 @@
 
 .playlist_item_album_thumbnail {
 	outline: 3px groove #ffffff;
+	width: 150px;
+	height: 150px;
 }
 
 .playlist_item_tracks_container {

@@ -6,9 +6,7 @@ class PlaylistController < ApplicationController
 
 	# GET /playlist/add?albumid=10
 	def add
-		pi = Playlist.new :albumid => params[:albumid]
-		unless pi.save
-			puts "ERRRRORR"
-		end
+		@item = Playlist.new :albumid => params[:albumid]
+		@item.save
 	end
 end

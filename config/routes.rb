@@ -9,6 +9,8 @@ Rmp3view::Application.routes.draw do
   match '/covers/:id' => 'covers#show'
   match '/covers/thumbnail/:id' => 'covers#thumbnail'
 
+  match '/tracks/:id' => 'tracks#show'
+
   match '/recreate' => 'application#recreate'
   root :to => 'application#index'
 
