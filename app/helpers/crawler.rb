@@ -70,7 +70,6 @@ module Crawler
 
 		# Find albums.
 		Crawler.recursive_match basedir, album_rules do |album|
-
 			puts "Processing #{album[:path]}..."
 
 			# Append cover to attribute list.
@@ -83,8 +82,10 @@ module Crawler
 				puts "Error: #{album.error}"
 				next
 			end
+		end
 
-			# Create thumbnail for cover.
+		# Create thumbnails for covers.
+		Album.all.each do |album|
 			if album.cover
 				image = Magick::Image.read(album.cover).first
 				image.thumbnail! tbsize, tbsize
@@ -94,8 +95,10 @@ module Crawler
 					puts "Error: #{tn.error}"
 				end
 			end
+		end
 
-			# Load tags from last.fm
+		# Load tags from last.fm
+		Album.all.each do |album|
 			toptags = Lastfm.album_toptags album.artist, album.title, lastfm_toptags
 			toptags.each do |tag|
 				t = Tag.new :albumid => album.id, :tag => tag[:tag], :number => tag[:number]
@@ -103,8 +106,10 @@ module Crawler
 					puts "Error: #{t.error}"
 				end
 			end
+		end
 
-			# List tracks.
+		# List tracks.
+		Album.all.each do |album|
 			Crawler.recursive_match album.path, track_rules do |track|
 
 				# CD number default.
@@ -119,8 +124,7 @@ module Crawler
 					puts "Error: #{track.error}"
 				end
 			end
-
-		end # End of album search.
+		end
 
 		# Turn on logging again.
 		ActiveRecord::Base.logger = oldlogger
