@@ -17,7 +17,7 @@
 
 var App = {
 	pages:   null,
-	current: 0
+	current: 1
 };
 
 $(document).ready(function() {

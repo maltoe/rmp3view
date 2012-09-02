@@ -1,0 +1,21 @@
+var toptags = [];
+<% @toptags.each do |tt| %>
+
+	<% next if tt.tag == "albums I own" %>
+
+	toptags.push({
+		text: "<%= tt.tag %>",
+		weight: <%= tt.number %>,
+		handlers: {
+			click: function() {
+				$.ajax({
+					url: '/medialib/search',
+					data: { "tag": "<%= tt.tag %>" },
+					dataType: "script"
+				});
+			}
+		}
+	});
+<% end %>
+
+$("#tagcloud").jQCloud(toptags);

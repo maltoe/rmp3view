@@ -1,11 +1,7 @@
 Rmp3view::Application.routes.draw do
-  match '/albums/searchByTag' => 'albums#search_by_tag'
-  match '/albums/searchByArtist' => 'albums#search_by_artist'
-  match '/albums/random' => 'albums#random'
-  match '/albums/:id' => 'albums#show'
-  match '/albums' => 'albums#index'
-  
-  match '/tags/toptags' => 'tags#toptags'
+  match '/medialib/search' => 'medialib#search'
+  match '/medialib/random' => 'medialib#random'
+  match '/medialib/toptags' => 'medialib#toptags'
 
   match '/covers/:id' => 'covers#show'
   match '/covers/thumbnail/:id' => 'covers#thumbnail'

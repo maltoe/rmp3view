@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
 
   # GET /
   def index
-  	render "index.html.erb"
   end
 
   # GET /recreate
