@@ -5,6 +5,7 @@ Rmp3view::Application.routes.draw do
 
   match '/playlist' => 'playlist#index'
   match '/playlist/add' => 'playlist#add'
+  match '/playlist/delete' => 'playlist#delete'
 
   match '/covers/:id' => 'covers#show'
   match '/covers/thumbnail/:id' => 'covers#thumbnail'

@@ -1,5 +1,11 @@
+#playlist_menu {
+	margin-left: 20px;
+	height: 20px;
+	width: 100%;
+}
+
 #playlist_scrollpane {
-	height: 800px;
+	height: 780px;
 	outline: none;
 }
 
@@ -33,6 +39,7 @@
 }
 
 .playlist_item_album {
+	text-align: center;
 	margin: 10px;
 }
 

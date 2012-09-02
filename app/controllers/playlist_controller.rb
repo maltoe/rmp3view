@@ -9,4 +9,9 @@ class PlaylistController < ApplicationController
 		@item = Playlist.new :albumid => params[:albumid]
 		@item.save
 	end
+
+	# GET /playlist/delete
+	def delete
+		Playlist.delete_all
+	end
 end
