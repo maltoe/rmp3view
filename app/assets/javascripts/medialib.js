@@ -16,9 +16,9 @@ $(document).ready(function() {
 function album_query_complete(data) {
 	$("#albumlist").html(data);
 
-	$(".album_item_add_button").click(function(e) {
+	$(".album_item_thumbnail").click(function(e) {
 		var albumid = $(this).data("albumid");
-		var item = $(this).parent().parent().parent();
+		var item = $(this).parent().parent();
 
 		$.ajax({
 			url: '/playlist/add',

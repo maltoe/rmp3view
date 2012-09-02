@@ -2,10 +2,7 @@
   <div class="album_item">
     
     <div class="album_item_thumbnail_container">
-      <img class="album_item_thumbnail" src=<%= url_for(:controller => "covers", :action => "thumbnail", :id => album.id) %><br />
-      <div class="album_item_add_overlay">
-        <img class="album_item_add_button" src="/play.png" data-albumid="<%= album.id %>"/>
-      </div>
+      <img class="album_item_thumbnail" src=<%= url_for(:controller => "covers", :action => "thumbnail", :id => album.id) %> data-albumid="<%= album.id %>"><br />
     </div>
 
     <div class="album_item_text">
