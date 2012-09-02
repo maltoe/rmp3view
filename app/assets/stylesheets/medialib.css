@@ -31,11 +31,14 @@
 #letterbar {
 	width: 100%;
 	text-align: center;
+  background: -webkit-gradient(linear, left top, left bottom, from(#666), to(#ab9b92));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 #letterbar a {
 	font-size: 140%;
-	color: #0D0;
+	
 	text-decoration: none;
 	font-weight: bold;
 }

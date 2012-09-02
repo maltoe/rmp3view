@@ -16,13 +16,13 @@
 	width: 98%;
 	outline: 3px groove #ffffff;
 	overflow: hidden;
-	margin-top: 2px;
+	margin-top: 6px;
 	margin-bottom: 20px;
 	margin-left: 10px;
 }
 
 .playlist_item:last-child {
-	margin-bottom: 2px;
+	margin-bottom: 6px;
 }
 
 .playlist_item:nth-child(even) {

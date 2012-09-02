@@ -18,36 +18,62 @@
 
 var App = {
 	pages:   null,
-	current: -1
+  frame: null,
+  framecontainer: null,
+  slidesize: -1,
+	current: -1,
+
+  slideTo: function(index) {
+    // Jump to index
+    index = parseInt(index);
+    if(index == this.current)
+      return;
+
+    if(this.pages[index]){
+      var center_offset = (this.frame.width() - this.slidesize) / 2;
+      this.framecontainer.css('left', index * this.slidesize * -1 + center_offset);
+      this.current = index;
+    }
+  },
+
+  slidePrev: function() {
+    var target = this.current - 1;
+    if(target >= 0);
+      this.slideTo(target);
+  },
+
+  slideNext: function() {
+    var target = this.current + 1;
+    if(target < this.pages.length)
+      this.slideTo(target);
+  },
+
+  init: function() {
+    this.pages = $('.page')
+    this.frame = $('#frame');
+    this.framecontainer = $('#framecontainer');
+    this.slidesize = $(this.pages[0]).outerWidth(true);
+    this.framecontainer.css('width', this.slidesize * this.pages.length + "px");
+  }
 };
 
 $(document).ready(function() {
 
 	// Set up views.
-	App.pages = $('.page');
-  var frame = $('#frame');
-  var framecontainer = $('#framecontainer');
-  var slidesize = $(App.pages[0]).outerWidth(true);
-  framecontainer.css('width', slidesize * App.pages.length + "px");
+  App.init();
+  App.slideTo(0);
 
-  // Slide to page index
-  App.slideTo = function(index) {
-    // Jump to index
-    index = parseInt(index);
-    if(index == App.current)
-      return;
+  // Event handler.
+  $(document).keydown(function(evt) {
 
-    if(App.pages[index]){
-    	var center_offset = (frame.width() - slidesize) / 2;
-	    framecontainer.css('left', index * slidesize * -1 + center_offset);
-	    App.current = index;
+    var code = evt.keyCode;
+    if(code == 39 || code == 34){
+      App.slideNext();
     }
-  };
-
-	// Run init function.
-	$(window).bind('load', function(){
-		App.slideTo(0);
-	});  
+    else if(code == 37 || code == 33){
+      App.slidePrev();
+    }  
+  });
 
   App.pages.click(function() {
   	App.slideTo($(this).data("page"));
