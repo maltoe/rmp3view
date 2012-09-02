@@ -7,6 +7,7 @@ gem 'jquery-ui-rails', '2.0.0'
 gem 'jqcloud-rails', '1.0.0'
 gem 'rmagick', '2.13.1'
 gem 'httparty', '0.8.3'
+gem 'acts_as_list', '0.1.8'
 
 # Gems used only for assets and not required
 # in production environments by default.

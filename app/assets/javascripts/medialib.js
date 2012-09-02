@@ -17,8 +17,17 @@ function album_query_complete(data) {
 	$("#albumlist").html(data);
 
 	$(".album_item_add_button").click(function(e) {
-		//var albumid = $(this).data("albumid");
-		$(this).parent().parent().parent().addClass("album_added");
+		var albumid = $(this).data("albumid");
+		var item = $(this).parent().parent().parent();
+
+		$.ajax({
+			url: '/playlist/add',
+			data: { 'albumid': albumid },
+			dataType: 'script',
+			success: function() {
+				item.addClass("album_added");
+			}
+		});	
 	});
 
 	// Refresh jScrollPane.

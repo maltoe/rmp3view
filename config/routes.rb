@@ -3,11 +3,13 @@ Rmp3view::Application.routes.draw do
   match '/medialib/random' => 'medialib#random'
   match '/medialib/toptags' => 'medialib#toptags'
 
+  match '/playlist' => 'playlist#index'
+  match '/playlist/add' => 'playlist#add'
+
   match '/covers/:id' => 'covers#show'
   match '/covers/thumbnail/:id' => 'covers#thumbnail'
 
   match '/recreate' => 'application#recreate'
-
   root :to => 'application#index'
 
   # The priority is based upon order of creation:

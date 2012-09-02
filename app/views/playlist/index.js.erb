@@ -1,0 +1,4 @@
+var playlist = $("#playlist");
+<% @playlist_items.each do |it| %>
+	playlist.append($("<li><%= it.albumid %></li>"));
+<% end %>
