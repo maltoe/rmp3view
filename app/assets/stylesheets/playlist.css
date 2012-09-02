@@ -1,5 +1,5 @@
 #playlist_scrollpane {
-	height: 900px;
+	height: 840px;
 	outline: none;
 }
 
@@ -51,6 +51,9 @@
   border-radius: 5px;
   overflow: hidden;
 	font-size: 120%;
+
+  -webkit-animation-duration: 200ms;
+  -webkit-animation-timing-function: linear;
 }
 
 .playlist_item:nth-child(even) .playlist_item_tracks_item:hover {
@@ -67,6 +70,13 @@
 	-webkit-transition-duration: 200ms;
 }
 
+@-webkit-keyframes playlist_item_tracks_activated {
+	0% { margin-left: 0; }
+	50% { margin-left: -20px; }
+	100% { margin-left: 0; }
+}
+
+
 .playlist_item_tracks_item_number {
 	float: left;
 	width: 50px;
@@ -80,3 +90,4 @@
 	float: left;
 	margin-left: 15px;
 }
+

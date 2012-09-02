@@ -5,8 +5,7 @@
 			<img class="playlist_item_album_thumbnail" src=<%= url_for(:controller => "covers", :action => "thumbnail", :id => item.album.id) %> data-albumid="<%= item.album.id %>" /><br />
 			<div class="playlist_item_album_info">
 				<h1><%= item.album.title %></h1>
-				<h2><%= item.album.artist %></h2>
-				<h3><%= item.album.year %></h3>
+				<h2><%= item.album.artist %> / <%= item.album.year %></h2>
 			</div>
 		</div>
 	</div>
@@ -14,7 +13,7 @@
 	<div class="playlist_item_tracks_container">
 		<div class="playlist_item_tracks">
 			<% item.album.tracks.each do |track| %>
-				<div class="playlist_item_tracks_item">
+				<div class="playlist_item_tracks_item" data-trackid="<%= track.id %>">
 					<div class="playlist_item_tracks_item_number"><%= track.number %></div>
 					<div class="playlist_item_tracks_item_name">
 						<%= track.artist %> - <%= track.title %>
