@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   # GET /
   def index
+  	render :index, :layout => false
   end
 
   # GET /recreate

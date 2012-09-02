@@ -2,19 +2,21 @@
 //= require jquery.jscrollpane
 //= require jquery.mousewheel
 
-$(document).ready(function() {
+function Medialib() {
+	// Initialization.
+	this.albumlist = $("#albumlist");
+	this.scrollpane = $("#albumlist_scrollpane");
 
+	this.scrollpane.jScrollPane();
+	
 	$.ajax({
 		url: '/medialib/toptags',
 		dataType: 'script'
 	});
+}
 
-	$("#albumlist_scrollpane").jScrollPane();
-	
-});
-
-function albumlist_update(data) {
-	$("#albumlist").html(data);
+Medialib.prototype.albumlist_update = function(data) {
+	this.albumlist.html(data);
 
 	$(".album_item_thumbnail").click(function(e) {
 		var albumid = $(this).data("albumid");
@@ -31,5 +33,5 @@ function albumlist_update(data) {
 	});
 
 	// Refresh jScrollPane.
-	$("#albumlist_scrollpane").data("jsp").reinitialise({"mouseWheelSpeed": 50});
+	this.scrollpane.data("jsp").reinitialise({"mouseWheelSpeed": 50});
 }

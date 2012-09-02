@@ -15,67 +15,19 @@
 //= require jquery.ui.dialog
 //= require_tree .
 //= require recreate
+//= require pages
 
-var App = {
-	pages:   null,
-  frame: null,
-  framecontainer: null,
-  slidesize: -1,
-	current: -1,
-
-  slideTo: function(index) {
-    // Jump to index
-    index = parseInt(index);
-    if(index == this.current)
-      return;
-
-    if(this.pages[index]){
-      var center_offset = (this.frame.width() - this.slidesize) / 2;
-      this.framecontainer.css('left', index * this.slidesize * -1 + center_offset);
-      this.current = index;
-    }
-  },
-
-  slidePrev: function() {
-    var target = this.current - 1;
-    if(target >= 0)
-      this.slideTo(target);
-  },
-
-  slideNext: function() {
-    var target = this.current + 1;
-    if(target < this.pages.length)
-      this.slideTo(target);
-  },
-
-  init: function() {
-    this.pages = $('.page');
-    this.frame = $('#frame');
-    this.framecontainer = $('#framecontainer');
-    this.slidesize = $(this.pages[0]).outerWidth(true);
-    this.framecontainer.css('width', this.slidesize * this.pages.length + "px");
-  }
-};
+var pages = null;
+var player = null;
+var playlist = null;
+var medialib = null;
 
 $(document).ready(function() {
 
-	// Set up views.
-  App.init();
-  App.slideTo(0);
+	// Initialization.
+  pages = new Pages();
+  player = new Player();
+  playlist = new Playlist();
+  medialib = new Medialib();
 
-  // Event handler.
-  $(document).keydown(function(evt) {
-
-    var code = evt.keyCode;
-    if(code == 39 || code == 34){
-      App.slideNext();
-    }
-    else if(code == 37 || code == 33){
-      App.slidePrev();
-    }  
-  });
-
-  App.pages.click(function() {
-  	App.slideTo($(this).data("page"));
-  });
 });
