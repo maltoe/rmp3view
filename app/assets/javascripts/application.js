@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.ui.dialog
 //= require_tree .
+//= require recreate
 
 var App = {
 	pages:   null,
@@ -43,29 +44,7 @@ $(document).ready(function() {
 	// Run init function.
 	$(window).bind('load', function(){
 		App.slideTo(App.current);
-	});
-
-  // Event handler.
-  $("#recreate_overlay_show").click(function() {
-		$( "#recreate_confirm" ).dialog({
-			resizable: false,
-			height: 210,
-			width: 450,
-			modal: true,
-			buttons: {
-				"Yep, I'm sure!": function() {
-					$("#recreation_overlay").fadeIn();
-					$(this).dialog("close");
-					$.get("/recreate", function() {
-						$("#recreation_overlay").fadeOut();
-					});
-				},
-				Cancel: function() {
-					$(this).dialog("close");
-				}
-			}
-		});
-	});
+	});  
 
   App.pages.click(function() {
   	App.slideTo($(this).data("page"));

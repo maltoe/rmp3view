@@ -1,0 +1,6 @@
+$("#recreation_overlay_text").html("<%= escape_javascript(@status[:message]) %>");
+<% if @status[:done] %>
+	$("#recreation_overlay").fadeOut();
+<% else %>
+	call_recreate();
+<% end %>

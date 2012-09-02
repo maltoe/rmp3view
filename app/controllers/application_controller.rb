@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
 
   # GET /recreate
 	def recreate
-		Crawler::crawl!
-		head :ok
+		@status = Crawler.recreate!
 	end
 end

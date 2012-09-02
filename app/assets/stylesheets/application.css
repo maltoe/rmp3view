@@ -77,11 +77,11 @@ footer {
 	width: 100%;
 	display: none;
 	opacity: 0.8;
-	background-color: #DFD;
+	background-color: #BBB;
 	text-align: center;
 }
 
-#recreation_overlay h1 {
+#recreation_overlay_text {
 	font-size: 200%;
-	margin-top: 300px;
+	margin-top: 400px;
 }
