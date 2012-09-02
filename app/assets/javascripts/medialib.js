@@ -13,7 +13,7 @@ $(document).ready(function() {
 	
 });
 
-function album_query_complete(data) {
+function albumlist_update(data) {
 	$("#albumlist").html(data);
 
 	$(".album_item_thumbnail").click(function(e) {
