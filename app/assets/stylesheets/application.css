@@ -85,3 +85,9 @@ footer {
 	font-size: 200%;
 	margin-top: 400px;
 }
+
+.scroll-pane {
+	box-shadow: 0 0 3px 3px #777;
+	margin: 20px;
+	padding: 1px;
+}

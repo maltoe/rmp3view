@@ -19,9 +19,11 @@ function playlist_update() {
     this.style.webkitAnimationName = '';
 	});
 
-	$('.playlist_item_tracks_item').click(function(){
-		console.log($(this).data("trackid"));
+	$('.playlist_item_tracks_item').click(function() {
+		var trackid = $(this).data("trackid");
+		var player = $("#player").get(0);
+		player.setAttribute("src", "/tracks/" + trackid);
+		player.play();
 	  $(this).css('webkitAnimationName', 'playlist_item_tracks_activated');
 	});
-
 }

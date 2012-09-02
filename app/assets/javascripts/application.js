@@ -18,7 +18,7 @@
 
 var App = {
 	pages:   null,
-	current: 1
+	current: -1
 };
 
 $(document).ready(function() {
@@ -34,6 +34,9 @@ $(document).ready(function() {
   App.slideTo = function(index) {
     // Jump to index
     index = parseInt(index);
+    if(index == App.current)
+      return;
+
     if(App.pages[index]){
     	var center_offset = (frame.width() - slidesize) / 2;
 	    framecontainer.css('left', index * slidesize * -1 + center_offset);
@@ -43,7 +46,7 @@ $(document).ready(function() {
 
 	// Run init function.
 	$(window).bind('load', function(){
-		App.slideTo(App.current);
+		App.slideTo(0);
 	});  
 
   App.pages.click(function() {

@@ -1,15 +1,13 @@
 #playlist_scrollpane {
-	margin: 20px;
 	height: 800px;
 	outline: none;
 }
 
 #playlist {
-	text-align: center;
 }
 
 .playlist_item {
-	width: 95%;
+	width: 98%;
 	outline: 3px groove #ffffff;
 	overflow: hidden;
 	margin-top: 2px;
