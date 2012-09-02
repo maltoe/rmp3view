@@ -6,7 +6,8 @@ class MedialibController < ApplicationController
       @albums = Album.joins("JOIN tags ON tags.albumid = albums.id").where("tags.tag" => params[:tag])
     else
       if params.has_key? :keyword
-        @albums = Album.where "artist LIKE '%#{params[:keyword]}%' OR title LIKE '%#{params[:keyword]}%'"
+        k = "%" + params[:keyword] + "%"
+        @albums = Album.where("artist LIKE ? OR title LIKE ?", k, k)
       else
         redirect_to "/404.html"
       end
