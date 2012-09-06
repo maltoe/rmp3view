@@ -42,6 +42,14 @@ Playlist.prototype.append = function(item) {
 	this.scrollpane.data("jsp").reinitialise({"mouseWheelSpeed": 50});
 }
 
+Playlist.prototype.clear = function() {
+	$("#playlist").html("");
+	this.scrollpane.data("jsp").reinitialise({"mouseWheelSpeed": 50});
+	this.items = [];
+	this.position = -1;
+	this.number = -1;
+}
+
 Playlist.prototype.play = function() {
 	// Deactivate the currently playing song item.
 	$(".playlist_item_tracks_item_playling").removeClass("playlist_item_tracks_item_playling");
@@ -61,6 +69,10 @@ Playlist.prototype.play_first = function() {
 }
 
 Playlist.prototype.advance = function() {
+	// Stop if playlist has been cleared.
+	if(this.items.length == 0)
+		return;
+
 	// Play first song first.
 	if(this.position == -1) {
 		this.play_first();
