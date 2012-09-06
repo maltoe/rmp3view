@@ -70,6 +70,13 @@
   -webkit-animation-timing-function: linear;
 }
 
+.playlist_item_tracks_item.playlist_item_tracks_item_playling .playlist_item_tracks_item_number {
+	background-color: red;
+	-webkit-transition: background-color;
+	-webkit-transition-timing-function: ease-out;
+	-webkit-transition-duration: 500ms;
+}
+
 .playlist_item:nth-child(even) .playlist_item_tracks_item:hover {
 	background-color: #cdbdb4;
 	-webkit-transition: background-color;

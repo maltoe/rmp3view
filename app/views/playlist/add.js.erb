@@ -1,1 +1,22 @@
-playlist.append("<%= escape_javascript(render('playlistitem', :item => @item)) %>");
+var js_item;
+<% @playlist_items.each do |item| %>
+	js_item = {
+		position: "<%= item.position %>",
+		id: "<%= item.album.id %>",
+		artist: "<%= item.album.artist %>",
+		title: "<%= item.album.title %>",
+		year: "<%= item.album.year %>",
+		tracks: [
+			<% item.album.tracks.each do |track| %>
+			{ 
+				id: "<%= track.id %>",
+				number: "<%= track.number %>", 
+				artist: "<%= track.artist %>",
+				title: "<%= track.title %>"
+			},
+			<% end %>
+		],
+		imgurl: "<%= url_for(:controller => "covers", :action => "thumbnail", :id => item.album.id) %>"
+	};
+	playlist.append(js_item);
+<% end %>

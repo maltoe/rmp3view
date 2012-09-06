@@ -1,6 +1,10 @@
 function Player() {
 	this.audio = $("#player_audio").get(0);
-	this.current = 0;
+
+	// Register event handler.
+	$("#next_button").click(function() {
+		playlist.advance();
+	});
 }
 
 Player.prototype.play = function(trackid) {

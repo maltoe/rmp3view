@@ -1,3 +1,28 @@
+<script id="playlist_item_template" type="text/x-handlebars-template">
+<div class="playlist_item" data-position="{{position}}">
+	<div class="playlist_item_album_container">
+		<div class="playlist_item_album">
+			<img class="playlist_item_album_thumbnail" src="{{imgurl}}" />
+			<br />
+			<div class="playlist_item_album_info">
+				<h1>{{title}}</h1>
+				<h2>{{artist}} / {{year}}</h2>
+			</div>
+		</div>
+	</div>
+	<div class="playlist_item_tracks_container">
+		<div class="playlist_item_tracks">
+			{{#each tracks}}
+			<div class="playlist_item_tracks_item" data-number={{number}}>
+				<div class="playlist_item_tracks_item_number">{{number}}</div>
+				<div class="playlist_item_tracks_item_name">{{artist}} - {{title}}</div>
+			</div>
+			{{/each}}
+		</div>	
+	</div>
+</div>
+</script>
+
 <div id="playlist_container">
 	<div id="playlist_menu">
 		<%= link_to "Clear", { :controller => "playlist", :action => "delete" }, :remote => true %>
