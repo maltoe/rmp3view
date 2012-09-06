@@ -6,14 +6,29 @@ var js_item;
 		artist: "<%= item.album.artist %>",
 		title: "<%= item.album.title %>",
 		year: "<%= item.album.year %>",
-		tracks: [
-			<% item.album.tracks.each do |track| %>
-			{ 
-				id: "<%= track.id %>",
-				number: "<%= track.number %>", 
-				artist: "<%= track.artist %>",
-				title: "<%= track.title %>"
-			},
+
+		<% # I'm re-arranging my model here. Omg. %>
+		<% ts = item.album.tracks %>
+		<% cd = 0 %>
+		cds: [
+			<% while ! ts.empty? do %>
+			<% cd = cd + 1 %>
+				{
+					number: "<%= cd %>",
+					tracks: [
+						<% # ts is sorted by cd! %>
+						<% ts = ts.drop_while do |track| %>
+							<% next false unless track.cd != cd %>
+								{ 
+								id: "<%= track.id %>",
+								number: "<%= track.number %>", 
+								artist: "<%= track.artist %>",
+								title: "<%= track.title %>"
+								},
+							<% true %>
+						<% end %>
+					]
+				},
 			<% end %>
 		],
 		imgurl: "<%= url_for(:controller => "covers", :action => "thumbnail", :id => item.album.id) %>"

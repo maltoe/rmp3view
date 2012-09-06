@@ -59,6 +59,12 @@
 	text-align: left;
 }
 
+.playlist_item_tracks_cd {
+	outline: 3px groove #ffffff;
+	padding: 5px;
+	margin-bottom: 10px;
+}
+
 .playlist_item_tracks_item {
   margin-bottom: 2px;
   border: 1px solid #fff;

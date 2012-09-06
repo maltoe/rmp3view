@@ -21,7 +21,7 @@ Rmp3view::Application.config.crawler = {
 	# The following rules will recognize these things and associate names to the
 	# embedded captures.
 	#
-	# Be sure to place most probable regular expressions first.
+	# Be careful about the order of expressions.
 	#
 
 	:album_rules => [
@@ -30,9 +30,9 @@ Rmp3view::Application.config.crawler = {
 	],
 
 	:track_rules => [
-		{ :pattern => /\/(\d\d) - ([^\/]*?) - ([^\/]*)\.(?:ogg|mp3)$/, :vars => [:number, :artist, :title] },
 		{ :pattern => /\/CD ?(\d)\/([^\/]*?) - (\d\d) - ([^\/]*)\.(?:ogg|mp3)$/, :vars => [:cd, :artist, :number, :title] },
 		{ :pattern => /\/CD ?(\d)\/(\d\d) - ([^\/]*?) - ([^\/]*)\.(?:ogg|mp3)$/, :vars => [:cd, :number, :artist, :title] },
+		{ :pattern => /\/(\d\d) - ([^\/]*?) - ([^\/]*)\.(?:ogg|mp3)$/, :vars => [:number, :artist, :title] },
 		{ :pattern => /\/([^\/]*?) - (\d\d) - ([^\/]*)\.(?:ogg|mp3)$/, :vars => [:artist, :number, :title] }
 	]
 }

@@ -12,11 +12,15 @@
 	</div>
 	<div class="playlist_item_tracks_container">
 		<div class="playlist_item_tracks">
-			{{#each tracks}}
-			<div class="playlist_item_tracks_item" data-number={{number}}>
-				<div class="playlist_item_tracks_item_number">{{number}}</div>
-				<div class="playlist_item_tracks_item_name">{{artist}} - {{title}}</div>
-			</div>
+			{{#each cds}}
+				<div class="playlist_item_tracks_cd" data-cd={{number}}>
+					{{#each tracks}}
+					<div class="playlist_item_tracks_item" data-number={{number}}>
+						<div class="playlist_item_tracks_item_number">{{number}}</div>
+						<div class="playlist_item_tracks_item_name">{{artist}} - {{title}}</div>
+					</div>
+					{{/each}}
+				</div>	
 			{{/each}}
 		</div>	
 	</div>

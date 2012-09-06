@@ -184,7 +184,7 @@ module Crawler
 							yield y
 
 							matched = true
-							next
+							break
 						end
 					end
 
