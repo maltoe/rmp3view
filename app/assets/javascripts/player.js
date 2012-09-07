@@ -16,3 +16,7 @@ Player.prototype.play = function(trackid) {
 	this.audio.setAttribute("src", "/tracks/" + trackid);
 	this.audio.play();
 }
+
+Player.prototype.stop = function() {
+	this.audio.setAttribute("src", "");
+}

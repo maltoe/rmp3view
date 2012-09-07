@@ -1,1 +1,5 @@
-playlist.clear();
+<% if @position %>
+	playlist.delete("<%= @position %>")
+<% else %>
+	playlist.clear();
+<% end %>

@@ -16,9 +16,8 @@ var js_item;
 				{
 					number: "<%= cd %>",
 					tracks: [
-						<% # ts is sorted by cd! %>
-						<% ts = ts.drop_while do |track| %>
-							<% next false unless track.cd != cd %>
+						<% ts = ts.delete_if do |track| %>
+							<% next false unless track.cd == cd %>
 								{ 
 								id: "<%= track.id %>",
 								number: "<%= track.number %>", 

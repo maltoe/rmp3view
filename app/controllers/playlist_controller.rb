@@ -13,7 +13,15 @@ class PlaylistController < ApplicationController
 	end
 
 	# GET /playlist/delete
+	# GET /playlist/delete?position=1
 	def delete
-		Playlist.delete_all
+		if params[:position]
+			item = Playlist.where(params[:position])[0] 
+			item.remove_from_list
+			item.delete
+			@position = params[:position]
+		else
+			Playlist.delete_all
+		end
 	end
 end

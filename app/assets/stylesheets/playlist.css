@@ -41,6 +41,23 @@
 .playlist_item_album {
 	text-align: center;
 	margin: 10px;
+	position: relative;
+}
+
+.playlist_item_delete_button {
+	position: absolute;
+	top: 1em;
+	left: 1em;
+	width: 32px;
+	height: 32px;
+}
+
+.playlist_item_delete_button:hover {
+	border-radius: 15px;
+	box-shadow: 0 0 5px 5px #4E8;
+	-webkit-transition: box-shadow;
+	-webkit-transition-timing-function: ease-out;
+	-webkit-transition-duration: 200ms;
 }
 
 .playlist_item_album_thumbnail {

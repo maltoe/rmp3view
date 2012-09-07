@@ -86,14 +86,14 @@
 }
 
 .album_item:not(.album_added) .album_item_thumbnail:hover {
-	box-shadow: 0 0 10px 10px #4E8;
+	box-shadow: 0 0 5px 5px #4E8;
 	-webkit-transition: box-shadow;
 	-webkit-transition-timing-function: ease-out;
 	-webkit-transition-duration: 200ms;
 }
 
 .album_item:not(.album_added) .album_item_thumbnail:active {
-	box-shadow: 0 0 10px 10px #4E8, 0 0 15px 15px #6FC;
+	box-shadow: 0 0 5px 5px #4E8, 0 0 10px 10px #6FC;
 	-webkit-transition: box-shadow;
 	-webkit-transition-timing-function: ease-out;
 	-webkit-transition-duration: 100ms;
