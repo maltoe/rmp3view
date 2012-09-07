@@ -75,24 +75,23 @@ Playlist.prototype.delete = function(position) {
 			self.number = -1;
 			player.stop();
 		} else {
-			// Set to beginning of new current album.
-			self.cd = 1;
-			self.number = 1;
-
 			// Deleted album was playing?
 			if(self.position == position) {
+				// Set to beginning of new current album.
+				self.cd = 1;
+				self.number = 1;
+
 				// Deleted album was the last album?
 				if(self.position >= self.items.length) {
 					self.position = 1;
-				} else {
-					// Play first track of new album on the same position.
-				}
+				} 
+
+				self.play(); 
+				
 			// Currently playing album has larger position?
 			} else if(self.position > position) {
 				self.position -= 1;
 			}
-			
-			self.play(); 
 		}
 	});
 }
