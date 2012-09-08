@@ -8,13 +8,12 @@
 <div class="playlist_item" data-position="{{{position}}}">
 	<div class="playlist_item_album_container">
 		<div class="playlist_item_album">
-			<img class="playlist_item_delete_button" src="/delete.png" />
 			<img class="playlist_item_album_thumbnail" src="{{{imgurl}}}" />
-			<br />
 			<div class="playlist_item_album_info">
-				<h1>{{{title}}}</h1>
-				<h2>{{{artist}}} / {{{year}}}</h2>
+				<div class="playlist_item_album_info_title">{{{title}}} ({{{year}}})</div>
+				<div class="playlist_item_album_info_artist">{{{artist}}}</div>
 			</div>
+			<img class="playlist_item_delete_button" src="/delete.png" />
 		</div>
 	</div>
 	<div class="playlist_item_tracks_container">

@@ -34,20 +34,37 @@
 }
 
 .playlist_item_album_container {
-	float: left;
-	width: 35%;
-}
-
-.playlist_item_album {
-	text-align: center;
-	margin: 10px;
+	width: 100%;
 	position: relative;
 }
 
+.playlist_item_album {
+	margin: 10px;
+}
+
+.playlist_item_album_thumbnail {
+	float: left;
+	outline: 3px groove #ffffff;
+	width: 92px;
+	height: 92px;
+}
+
+.playlist_item_album_info {
+	margin-left: 2em;
+	float: left;
+}
+
+.playlist_item_album_info_title {
+	font-size: 180%;
+}
+
+
+.playlist_item_album_info_artist {
+	font-size: 150%;
+}
+
 .playlist_item_delete_button {
-	position: absolute;
-	top: 1em;
-	left: 1em;
+	float: right;
 	width: 32px;
 	height: 32px;
 }
@@ -60,20 +77,17 @@
 	-webkit-transition-duration: 200ms;
 }
 
-.playlist_item_album_thumbnail {
-	outline: 3px groove #ffffff;
-	width: 150px;
-	height: 150px;
-}
-
 .playlist_item_tracks_container {
-	float: left;
-	width: 65%;
+	padding-top: 5px;
+	clear: both;
+	width: 100%;
 }
 
 .playlist_item_tracks {
 	margin: 10px;
 	text-align: left;
+	font-size: 60%;
+	font-family: 'Duru Sans', sans-serif;
 }
 
 .playlist_item_tracks_cd {
