@@ -1,24 +1,30 @@
+
+<!-- 
+	Remember, handlebars html escapes fields when put into {{}}, but doesn't
+	when enclosed in {{{}}}! The data we got from the Rails js view is already
+	html escaped.
+-->
 <script id="playlist_item_template" type="text/x-handlebars-template">
-<div class="playlist_item" data-position="{{position}}">
+<div class="playlist_item" data-position="{{{position}}}">
 	<div class="playlist_item_album_container">
 		<div class="playlist_item_album">
 			<img class="playlist_item_delete_button" src="/delete.png" />
-			<img class="playlist_item_album_thumbnail" src="{{imgurl}}" />
+			<img class="playlist_item_album_thumbnail" src="{{{imgurl}}}" />
 			<br />
 			<div class="playlist_item_album_info">
-				<h1>{{title}}</h1>
-				<h2>{{artist}} / {{year}}</h2>
+				<h1>{{{title}}}</h1>
+				<h2>{{{artist}}} / {{{year}}}</h2>
 			</div>
 		</div>
 	</div>
 	<div class="playlist_item_tracks_container">
 		<div class="playlist_item_tracks">
 			{{#each cds}}
-				<div class="playlist_item_tracks_cd" data-cd={{number}}>
+				<div class="playlist_item_tracks_cd" data-cd={{{number}}}>
 					{{#each tracks}}
-					<div class="playlist_item_tracks_item" data-number={{number}}>
-						<div class="playlist_item_tracks_item_number">{{number}}</div>
-						<div class="playlist_item_tracks_item_name">{{artist}} - {{title}}</div>
+					<div class="playlist_item_tracks_item" data-number={{{number}}}>
+						<div class="playlist_item_tracks_item_number">{{{number}}}</div>
+						<div class="playlist_item_tracks_item_name">{{{artist}}} - {{{title}}}</div>
 					</div>
 					{{/each}}
 				</div>	
