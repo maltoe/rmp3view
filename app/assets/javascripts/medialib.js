@@ -13,7 +13,8 @@ function Medialib() {
 	this.albumlist_template = Handlebars.compile(albumlist_template_src);
 
 	this.scrollpane.jScrollPane({
-		enableKeyboardNavigation: false
+		enableKeyboardNavigation: false,
+		maintainPosition: false
 	});
 	
 	// Event handlers.
