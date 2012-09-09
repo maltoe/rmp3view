@@ -52,7 +52,7 @@ function Medialib() {
 }
 
 Medialib.prototype.set_focus = function() {
-	// TODO
+	this.albumlist.focus();
 }
 
 Medialib.prototype.albumlist_update = function(items) {
@@ -104,10 +104,21 @@ Medialib.prototype.item_to_td = function(item) {
 }
 
 Medialib.prototype.move_selection = function(xoffset, yoffset) {
-	var nsi = {
-		colid: this.selected_item.colid + xoffset,
-		rowid: this.selected_item.rowid + yoffset
-	};
+	if(this.items == null)
+		return;
+
+	var nsi;
+	if(this.selected_item == null) {
+		nsi = {
+			colid: 0,
+			rowid: 0
+		};
+	} else {
+		nsi = {
+			colid: this.selected_item.colid + xoffset,
+			rowid: this.selected_item.rowid + yoffset
+		};
+	}
 
 	if((nsi.colid >= 0) &&
 		 (nsi.colid <= 3) &&

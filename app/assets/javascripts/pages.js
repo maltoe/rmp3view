@@ -15,12 +15,10 @@ function Pages(pagesize, pages) {
     if((code == 39 /* || code == 34 */) && // RIGHT (PAGE DOWN)
         evt.shiftKey) { 
       self.slide_next();
-      evt.preventDefault();
     }
     else if((code == 37 /* || code == 33 */) && // LEFT (PAGE UP)
         evt.shiftKey) { 
       self.slide_prev();
-      evt.preventDefault();
     }  
   });
 

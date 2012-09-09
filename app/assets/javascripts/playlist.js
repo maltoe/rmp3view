@@ -353,17 +353,25 @@ Playlist.prototype.update_qlist_idxs = function() {
 }
 
 Playlist.prototype.move_selection = function(direction, offset) {
-	var si = this.selected_item;
-	if((si == null) || (this.items.length == 0))
+	if(this.items.length == 0)
 		return;
 
-	for(var i = 0; i < offset; i++) {
-		if(direction > 0)
-			si = this.find_next_track(si);
-		else
-			si = this.find_previous_track(si);
-
-		// Due to the length check above, si cannot be null.
+	var si;
+	if(this.selected_item == null) {
+		si = {
+			position: 1,
+			cd: 1,
+			number: 1
+		};
+	} else {
+		si = this.selected_item;
+		for(var i = 0; i < offset; i++) {
+			if(direction > 0)
+				si = this.find_next_track(si);
+			else
+				si = this.find_previous_track(si);
+			// Due to the length check above, si cannot be null.
+		}
 	}
 
 	this.selected_item = si;
