@@ -154,8 +154,13 @@ Playlist.prototype.delete = function(position) {
 				// In this case, we want to stop playing the song and
 				// advance to the next album, if there is one. Or
 				// continue with the qlist, of course.
-				self.current_item.number = 1;
+				self.current_item.number = 0;
 				self.current_item.cd = 1;
+
+				// In case the deleted album was also the last one.
+				if(self.items.length < position)
+					self.current_item.position -= 1;
+
 				self.advance();
 			}
 		}
