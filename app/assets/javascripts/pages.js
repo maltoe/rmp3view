@@ -16,10 +16,10 @@ function Pages() {
   var self = this;
   $(document).keydown(function(evt) {
     var code = evt.keyCode;
-    if(code == 39 || code == 34){
+    if(code == 39 /* || code == 34 */) { // RIGHT (PAGE DOWN)
       self.slide_next();
     }
-    else if(code == 37 || code == 33){
+    else if(code == 37 /* || code == 33 */) { // LEFT (PAGE UP)
       self.slide_prev();
     }  
   });

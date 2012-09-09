@@ -10,6 +10,7 @@
 }
 
 #playlist {
+	outline: none;
 }
 
 .playlist_item {
@@ -97,35 +98,34 @@
 }
 
 .playlist_item_tracks_item {
-  margin-bottom: 2px;
-  border: 1px solid #fff;
-  border-radius: 5px;
   overflow: hidden;
 	font-size: 120%;
+	position: relative;
 
 	cursor: pointer;
-	-webkit-user-select: none;
 
   -webkit-animation-duration: 200ms;
   -webkit-animation-timing-function: linear;
 }
 
-.playlist_item_tracks_item.playlist_item_tracks_item_playling .playlist_item_tracks_item_number {
-	background-color: red;
-	-webkit-transition: background-color;
-	-webkit-transition-timing-function: ease-out;
-	-webkit-transition-duration: 500ms;
+.playlist_item:nth-child(even) .playlist_item_tracks_item.playlist_item_tracks_item_selected {
+	background-color: #424;
+	color: #dfd;
 }
 
+.playlist_item:nth-child(odd) .playlist_item_tracks_item.playlist_item_tracks_item_selected {
+	background-color: #244;
+	color: #dfd;
+}
 
-.playlist_item:nth-child(even) .playlist_item_tracks_item:hover {
+.playlist_item:nth-child(even) .playlist_item_tracks_item:not(.playlist_item_tracks_item_selected):hover {
 	background-color: #cdbdb4;
 	-webkit-transition: background-color;
 	-webkit-transition-timing-function: ease-out;
 	-webkit-transition-duration: 300ms;
 }
 
-.playlist_item:nth-child(odd) .playlist_item_tracks_item:hover {
+.playlist_item:nth-child(odd) .playlist_item_tracks_item:not(.playlist_item_tracks_item_selected):hover {
 	background-color: #bdcdb4;
 	-webkit-transition: background-color;
 	-webkit-transition-timing-function: ease-out;
@@ -149,8 +149,29 @@
 	background-color: rgba(100, 100, 100, 0.4);
 }
 
+.playlist_item_tracks_item.playlist_item_tracks_item_playling .playlist_item_tracks_item_number {
+	background-color: black;
+	color: white;
+	-webkit-transition: background-color;
+	-webkit-transition-timing-function: ease-out;
+	-webkit-transition-duration: 500ms;
+}
+
 .playlist_item_tracks_item_name {
 	float: left;
 	margin-left: 15px;
 }
 
+.playlist_item_tracks_item_qpos {
+	position: absolute;
+	margin-left: 0.5em;
+	font-weight: bold;
+}
+
+.playlist_item_tracks_item.playlist_item_tracks_item_playling .playlist_item_tracks_item_qpos {
+	color: white;
+}
+
+.playlist_item_tracks_item:not(.playlist_item_tracks_item_playling) .playlist_item_tracks_item_qpos {
+	color: black;
+}

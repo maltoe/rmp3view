@@ -22,6 +22,7 @@
 				<div class="playlist_item_tracks_cd" data-cd={{{number}}}>
 					{{#each tracks}}
 					<div class="playlist_item_tracks_item" data-number={{{number}}}>
+						<div class="playlist_item_tracks_item_qpos"></div>
 						<div class="playlist_item_tracks_item_number">{{{number}}}</div>
 						<div class="playlist_item_tracks_item_name">{{{artist}}} - {{{title}}}</div>
 					</div>
@@ -38,6 +39,6 @@
 		<%= link_to "Clear", { :controller => "playlist", :action => "delete" }, :remote => true %>
 	</div>
 	<div id="playlist_scrollpane" class="scroll-pane">
-		<div id="playlist"></div>
+		<div id="playlist" tabindex="0"></div>
 	</div>
 </div>
