@@ -1,21 +1,27 @@
-console.log("HIER");
+// Re-arrange the model again.
+// Since handlebars is stupid, we have to emded the rowid and colid here.
 var js_items = {
 	rows: [
+		<% rowid = 0 %>
 		<% @albums.each_slice(4) do |slice| %>
 			{
+				rowid: <%= rowid %>,
 				albums: [
+					<% colid = 0 %>
 					<% slice.each do |album| %>
 						{
-							id: "<%= album.id %>",
+							colid: <%= colid %>,
+							id: <%= album.id %>,
 							artist: "<%= album.artist %>",
 							title: "<%= album.title %>",
 							thumbnail: "<%= url_for(:controller => "covers", :action => "thumbnail", :id => album.id) %>"
 						},
+					<% colid = colid + 1 %>
 					<% end %>
 					]
 			},
+		<% rowid = rowid + 1 %>
 		<% end %>
 	]
 };
-
 medialib.albumlist_update(js_items);

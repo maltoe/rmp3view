@@ -12,11 +12,15 @@ function Pages(pagesize, pages) {
   var self = this;
   $(document).keydown(function(evt) {
     var code = evt.keyCode;
-    if(code == 39 /* || code == 34 */) { // RIGHT (PAGE DOWN)
+    if((code == 39 /* || code == 34 */) && // RIGHT (PAGE DOWN)
+        evt.shiftKey) { 
       self.slide_next();
+      evt.preventDefault();
     }
-    else if(code == 37 /* || code == 33 */) { // LEFT (PAGE UP)
+    else if((code == 37 /* || code == 33 */) && // LEFT (PAGE UP)
+        evt.shiftKey) { 
       self.slide_prev();
+      evt.preventDefault();
     }  
   });
 

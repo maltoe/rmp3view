@@ -1,5 +1,11 @@
 //= require handlebars
 
+/*
+ * Remember that everything on the Playlist side is 1-indexed;
+ * current_item, selected_item, qlist, basically everything that
+ * has position, cd, and number.
+ */
+
 function Playlist() {
 	// Initialization.
 	this.playlist = $("#playlist");
@@ -12,12 +18,14 @@ function Playlist() {
 	var playlist_item_template_src   = $("#playlist_item_template").html();
 	this.playlist_item_template = Handlebars.compile(playlist_item_template_src);
 
-	this.scrollpane.jScrollPane();
+	this.scrollpane.jScrollPane({
+		enableKeyboardNavigation: false
+	});
 
 	var self = this;
 
-	// Don't know why, but on load, reinitialisation does not happen
-	// correctly.
+	// Don't know why, but reinitialisation does not happen
+	// correctly on window load.
 	setTimeout(function() {
 		self.reinitialise_scrollpane();
 	}, 2000);
@@ -29,11 +37,11 @@ function Playlist() {
     else if(code == 38) { // UP
     	self.move_selection(-1, 1);
     } else if(code == 33) { // PAGE UP
-    	self.move_selection(-1, 10);
+    	self.move_selection(-1, 5);
     } else if(code == 40) { // DOWN
     	self.move_selection(1, 1);
     } else if(code == 34) { // PAGE DOWN
-    	self.move_selection(1, 10);
+    	self.move_selection(1, 5);
     } else if(code == 13) {  // RETURN
     	self.current_item = self.selected_item;
     	self.track_to_div(self.current_item).css('webkitAnimationName', 'playlist_item_tracks_activated');

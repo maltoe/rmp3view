@@ -1,10 +1,10 @@
 <script id="albumlist_template" type="text/x-handlebars-template">
 	{{#each rows}}
-	<tr>
+	<tr class="albumlist_row" data-rowid={{{rowid}}}>
 		{{#each albums}}
-	  <td class="album_item">
+	  <td class="album_item" data-colid={{{colid}}} data-albumid="{{{id}}}">
 	    <div class="album_item_thumbnail_container">
-	      <img class="album_item_thumbnail" src="{{{thumbnail}}}" data-albumid="{{{id}}}"><br />
+	      <img class="album_item_thumbnail" src="{{{thumbnail}}}"><br />
 	    </div>
 	    <div class="album_item_text">
 	      <div class="album_item_artist">{{{artist}}}</div>
@@ -37,6 +37,6 @@
 		<% end %>
 	</div>
 	<div id="albumlist_scrollpane" class="scroll-pane">
-		<table id="albumlist"></table>
+		<table id="albumlist" tabindex="1"></table>
 	</div>
 </div>
