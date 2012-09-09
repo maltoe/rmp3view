@@ -1,7 +1,6 @@
 
-
 ## Dependencies
 
-libmagick-dev
-libmagickwand-dev
-libtag1-dev
+* libmagick-dev
+* libmagickwand-dev
+* libsqlite3-dev
