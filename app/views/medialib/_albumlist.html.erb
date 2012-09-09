@@ -1,14 +1,18 @@
-<% @albums.each do |album| %>
-  <div class="album_item">
-    
-    <div class="album_item_thumbnail_container">
-      <img class="album_item_thumbnail" src=<%= url_for(:controller => "covers", :action => "thumbnail", :id => album.id) %> data-albumid="<%= album.id %>"><br />
-    </div>
+<% @albums.each_slice(4) do |slice| %>
+	<tr>
+	<% slice.each do |album| %>
+	  <td class="album_item">
+	    
+	    <div class="album_item_thumbnail_container">
+	      <img class="album_item_thumbnail" src=<%= url_for(:controller => "covers", :action => "thumbnail", :id => album.id) %> data-albumid="<%= album.id %>"><br />
+	    </div>
 
-    <div class="album_item_text">
-      <div class="album_item_artist"><%= album.artist %></div>
-      <div class="album_item_title"><%= album.title %></div>
-    </div>
-    
-  </div>
+	    <div class="album_item_text">
+	      <div class="album_item_artist"><%= album.artist %></div>
+	      <div class="album_item_title"><%= album.title %></div>
+	    </div>
+	    
+	  </td>
+  <% end %>
+	</tr>
 <% end %>

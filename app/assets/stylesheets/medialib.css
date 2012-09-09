@@ -45,21 +45,19 @@
 #albumlist_scrollpane {
 	margin-top: 5px;
 	height: 575px;
-	/* jScrollPane draws a weird border after anything was clicked inside. */
 	outline: none;
 }
 
 #albumlist {
-	-webkit-column-count: 4;
-	-webkit-column-gap: 20px;
+	width: 100%;
 	padding: 5px;
+	vertical-align: top;
 }
 
 .album_item {
-	-webkit-column-break-inside: avoid;
-	margin: 5px;
-	margin-bottom: 10px;
-	position: relative;
+	vertical-align: top;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	width: 200px;
 	text-align: center;
 }
