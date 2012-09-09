@@ -9,6 +9,14 @@ function Medialib() {
 
 	this.scrollpane.jScrollPane();
 	
+	$(".letterbar_letter").click(function() {
+		$.ajax({
+			url: '/medialib/search',
+			data: { letter: $(this).data("letter") },
+			dataType: 'script'
+		});
+	});
+
 	$.ajax({
 		url: '/medialib/toptags',
 		dataType: 'script'
