@@ -44,7 +44,7 @@ Playlist.prototype.append = function(item) {
 		});
 	});
 
-	tracks.click(function() {
+	tracks.dblclick(function() {
 		self.number = $(this).data("number");
 		// TODO: This can't be the true way.
 		self.cd = $(this).parent().data("cd");

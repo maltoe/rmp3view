@@ -28,6 +28,11 @@
 	height: 180px;
 }
 
+#tagcloud span {
+	cursor: pointer;
+	-webkit-user-select: none;
+}
+
 #letterbar {
 	width: 100%;
 	text-align: center;
