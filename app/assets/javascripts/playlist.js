@@ -317,8 +317,12 @@ Playlist.prototype.append_to_qlist = function() {
   // Check whether qlist already contains si.
   for(idx in this.qlist) {
   	var item = this.qlist[idx];
-  	if((item.position == si.position) && (item.cd = si.cd) && (item.number == si.number))
+  	if((item.position == si.position) && (item.cd = si.cd) && (item.number == si.number)) {
+  		this.qlist.splice(idx, 1);
+  		this.track_to_div(item).find(".playlist_item_tracks_item_qpos").html("");
+  		this.update_qlist_idxs();
   		return;
+  	}
   }
 
   // Append si.
