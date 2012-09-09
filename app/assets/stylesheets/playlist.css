@@ -53,6 +53,7 @@
 .playlist_item_album_info {
 	margin-left: 2em;
 	float: left;
+	width: 700px;
 }
 
 .playlist_item_album_info_title {
