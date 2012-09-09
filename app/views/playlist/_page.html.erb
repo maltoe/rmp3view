@@ -37,6 +37,7 @@
 <div id="playlist_container">
 	<div id="playlist_menu">
 		<%= link_to "Clear", { :controller => "playlist", :action => "delete" }, :remote => true %>
+		<a id="next_button" href="#">Next</a>
 	</div>
 	<div id="playlist_scrollpane" class="scroll-pane">
 		<div id="playlist" tabindex="0"></div>

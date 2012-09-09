@@ -3,7 +3,7 @@ class MedialibController < ApplicationController
   # GET /medialib/searchByTag?artist=Kid%20Rock
   def search
     if params.has_key? :tag
-      @albums = Album.joins("JOIN tags ON tags.albumid = albums.id").where("tags.tag" => params[:tag])
+      @albums = Album.joins("JOIN tags ON tags.albumid = albums.id").where("tags.tag" => params[:tag]).order("albums.artist ASC")
       return
     end
 

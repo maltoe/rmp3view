@@ -11,8 +11,10 @@ function Playlist() {
 
 	var playlist_item_template_src   = $("#playlist_item_template").html();
 	this.playlist_item_template = Handlebars.compile(playlist_item_template_src);
-	
+
 	this.scrollpane.jScrollPane();
+
+	var self = this;
 
 	// Don't know why, but on load, reinitialisation does not happen
 	// correctly.
@@ -20,7 +22,6 @@ function Playlist() {
 		self.reinitialise_scrollpane();
 	}, 2000);
 
-	var self = this;
 	this.playlist.keydown(function(evt) {
     var code = evt.keyCode;
     if(code == 81) // Q
@@ -39,6 +40,10 @@ function Playlist() {
     	self.play();
     }
   });
+
+  $("#next_button").click(function() {
+		self.advance();
+	});
 
 	$.ajax({
 		url: '/playlist',
