@@ -52,7 +52,7 @@ function Playlist() {
 }
 
 Playlist.prototype.set_focus = function() {
-	// TODO
+	this.playlist.focus();
 }
 
 Playlist.prototype.reinitialise_scrollpane = function() {
@@ -120,6 +120,8 @@ Playlist.prototype.delete = function(position) {
 	var self = this;
 	$(".playlist_item[data-position='" + position + "']").fadeOut(function() {
 		$(this).remove();
+
+		self.reinitialise_scrollpane();
 
 		// Update items.
 		self.items.splice(position - 1, 1);
