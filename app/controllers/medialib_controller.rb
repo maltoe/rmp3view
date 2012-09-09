@@ -4,13 +4,13 @@ class MedialibController < ApplicationController
   def search
     if params.has_key? :tag
       @albums = Album.joins("JOIN tags ON tags.albumid = albums.id").where("tags.tag" => params[:tag]).order("albums.artist ASC")
-      return
+      return render :update
     end
 
     if params.has_key? :keyword
       k = "%" + params[:keyword].downcase + "%"
       @albums = Album.where("lower(artist) LIKE ? OR lower(title) LIKE ?", k, k)
-      return
+      return render :update
     end
 
     if params.has_key? :letter
@@ -20,7 +20,7 @@ class MedialibController < ApplicationController
         l = params[:letter] + "%"
         @albums = Album.where("upper(artist) LIKE ?", l)
       end
-      return
+      return render :update
     end
 
     redirect_to "/404.html"
@@ -29,6 +29,7 @@ class MedialibController < ApplicationController
   # GET /medialib/random?limit=50
   def random
     @albums = Album.order("RANDOM()").limit(params[:limit])
+    render :update
   end
 
   # GET /medialib/toptags

@@ -1,0 +1,21 @@
+console.log("HIER");
+var js_items = {
+	rows: [
+		<% @albums.each_slice(4) do |slice| %>
+			{
+				albums: [
+					<% slice.each do |album| %>
+						{
+							id: "<%= album.id %>",
+							artist: "<%= album.artist %>",
+							title: "<%= album.title %>",
+							thumbnail: "<%= url_for(:controller => "covers", :action => "thumbnail", :id => album.id) %>"
+						},
+					<% end %>
+					]
+			},
+		<% end %>
+	]
+};
+
+medialib.albumlist_update(js_items);
