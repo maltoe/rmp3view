@@ -25,9 +25,14 @@ var medialib = null;
 $(document).ready(function() {
 
 	// Initialization.
-  pages = new Pages();
   player = new Player();
   playlist = new Playlist();
   medialib = new Medialib();
 
+  var slidesize = $(".page[data-page=0]").outerWidth(true);
+	pages = new Pages(slidesize, [playlist, medialib]);
+
+	$(".page").click(function() {
+    pages.slide_to($(this).data("page"));
+  });
 });

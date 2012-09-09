@@ -1,16 +1,12 @@
-function Pages() {
-	this.pages =   null;
-  this.frame = null;
-  this.framecontainer = null;
-  this.slidesize = -1;
-	this.current = -1;
+function Pages(pagesize, pages) {
+	this.pagesize = pagesize;
+  this.pages = pages;
+  this.current = -1;
 
   // Initialization.
-  this.pages = $('.page');
   this.frame = $('#frame');
   this.framecontainer = $('#framecontainer');
-  this.slidesize = $(this.pages[0]).outerWidth(true);
-  this.framecontainer.css('width', this.slidesize * this.pages.length + "px");
+  this.framecontainer.css('width', this.pagesize * this.pages.length + "px");
 
   // Event handler.
   var self = this;
@@ -24,10 +20,6 @@ function Pages() {
     }  
   });
 
-  this.pages.click(function() {
-    self.slide_to($(this).data("page"));
-  });
-
   this.slide_to(0);
 };
 
@@ -38,9 +30,10 @@ Pages.prototype.slide_to = function(index) {
     return;
 
   if(this.pages[index]){
-    var center_offset = (this.frame.width() - this.slidesize) / 2;
-    this.framecontainer.css('left', index * this.slidesize * -1 + center_offset);
+    var center_offset = (this.frame.width() - this.pagesize) / 2;
+    this.framecontainer.css('left', index * this.pagesize * -1 + center_offset);
     this.current = index;
+    this.pages[index].set_focus();
   }
 }
 

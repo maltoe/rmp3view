@@ -15,6 +15,10 @@ function Medialib() {
 	});
 }
 
+Medialib.prototype.set_focus = function() {
+	// TODO
+}
+
 Medialib.prototype.albumlist_update = function(data) {
 	this.albumlist.html(data);
 

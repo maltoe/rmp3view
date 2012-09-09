@@ -51,6 +51,10 @@ function Playlist() {
 	});
 }
 
+Playlist.prototype.set_focus = function() {
+	// TODO
+}
+
 Playlist.prototype.reinitialise_scrollpane = function() {
 	this.scrollpane.data("jsp").reinitialise({"mouseWheelSpeed": 50});
 }
