@@ -28,15 +28,10 @@
 	height: 180px;
 }
 
-#tagcloud span {
-	cursor: pointer;
-	-webkit-user-select: none;
-}
-
 #letterbar {
 	width: 100%;
 	text-align: center;
-  background: -webkit-gradient(linear, left top, left bottom, from(#666), to(#ab9b92));
+  background: -webkit-gradient(linear, left top, left bottom, from(#424), to(#244));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
