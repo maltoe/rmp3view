@@ -165,6 +165,11 @@
 	font-weight: bold;
 }
 
+.playlist_item_tracks_item_by {
+	color: #333;
+	font-weight: 400;
+}	
+
 .playlist_item_tracks_item.playlist_item_tracks_item_playling .playlist_item_tracks_item_qpos {
 	color: white;
 }
