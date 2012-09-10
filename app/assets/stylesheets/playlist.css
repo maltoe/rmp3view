@@ -1,5 +1,5 @@
 #playlist_menu {
-	margin-left: 20px;
+	/*margin-left: 20px;*/
 	height: 20px;
 	width: 100%;
 }
@@ -11,19 +11,19 @@
 
 #playlist {
 	outline: none;
+	padding: 10px;
+	width: 98%;
 }
 
 .playlist_item {
-	width: 98%;
+	width: 100%;
+	margin-bottom: 10px;
 	outline: 3px groove #ffffff;
 	overflow: hidden;
-	margin-top: 6px;
-	margin-bottom: 20px;
-	margin-left: 10px;
 }
 
 .playlist_item:last-child {
-	margin-bottom: 6px;
+	margin-bottom: 0;
 }
 
 .playlist_item:nth-child(even) {
@@ -64,7 +64,6 @@
 	font-weight: 700;
 }
 
-
 .playlist_item_album_info_artist {
 	font-size: 120%;
 }
@@ -73,14 +72,7 @@
 	float: right;
 	width: 32px;
 	height: 32px;
-}
-
-.playlist_item_delete_button:hover {
-	border-radius: 15px;
-	box-shadow: 0 0 5px 5px #4E8;
-	-webkit-transition: box-shadow;
-	-webkit-transition-timing-function: ease-out;
-	-webkit-transition-duration: 200ms;
+	cursor: pointer;
 }
 
 .playlist_item_tracks_container {

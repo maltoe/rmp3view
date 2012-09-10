@@ -380,11 +380,13 @@ Playlist.prototype.move_selection = function(direction, offset) {
 	track.addClass("playlist_item_tracks_item_selected");
 
 	// Update scrollpane.
-	var track_top = track.position().top;
+	var album = $(".playlist_item[data-position='" + si.position + "']");
+	var album_outerheight = album.outerHeight();
+	var album_top = album.position().top;
 	var jsppane_top = $("#playlist_scrollpane .jspPane").position().top;
-	var jsp_height = this.scrollpane.height();
-	if(track_top + jsppane_top > 0.95 * jsp_height)
-		this.scrollpane.data("jsp").scrollBy(0, 0.95 * jsp_height);
-	else if(track_top + jsppane_top < 0)
-		this.scrollpane.data("jsp").scrollBy(0, -0.95 * jsp_height);
+	var jsppane_height = this.scrollpane.height();
+	if(album_top + album_outerheight > jsppane_height - jsppane_top)
+		this.scrollpane.data("jsp").scrollToY(album_top);
+	else if(album_top < -jsppane_top)
+		this.scrollpane.data("jsp").scrollToY(album_top - jsppane_height + album_outerheight);
 }
