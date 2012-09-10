@@ -131,11 +131,11 @@ Medialib.prototype.move_selection = function(xoffset, yoffset) {
 	// Scroll around.
 	var itemtd = this.item_to_td(this.selected_item);
 	var item_top = itemtd.position().top;
-	var item_height = itemtd.height();
+	var item_outerheight = itemtd.outerHeight();
 	var jsppane_top = this.scrollpane.find(".jspPane").position().top;
 	var jsp_height = this.scrollpane.height();
-	if(item_top + jsppane_top > 0.95 * jsp_height)
-		this.scrollpane.data("jsp").scrollBy(0, 0.95 * jsp_height);
-	else if(item_top + jsppane_top < 0)
-		this.scrollpane.data("jsp").scrollBy(0, -0.95 * jsp_height + item_height);
+	if(item_top + item_outerheight > jsp_height - jsppane_top)
+		this.scrollpane.data("jsp").scrollToY(item_top);
+	else if(item_top < -jsppane_top)
+		this.scrollpane.data("jsp").scrollToY(item_top - jsp_height + item_outerheight);
 }

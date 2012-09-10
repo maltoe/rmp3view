@@ -43,7 +43,6 @@
 }
 
 #albumlist_scrollpane {
-	margin-top: 5px;
 	height: 575px;
 	outline: none;
 }
@@ -52,6 +51,7 @@
 	width: 100%;
 	padding: 5px;
 	outline: none;
+	border-spacing: 0;
 }
 
 .album_item {
