@@ -57,12 +57,16 @@
 }
 
 .playlist_item_album_info_title {
-	font-size: 180%;
+	font-size: 150%;
+}
+
+.playlist_item_album_info_title span {
+	font-weight: 700;
 }
 
 
 .playlist_item_album_info_artist {
-	font-size: 150%;
+	font-size: 120%;
 }
 
 .playlist_item_delete_button {
@@ -89,7 +93,7 @@
 	margin: 10px;
 	text-align: left;
 	font-size: 60%;
-	font-family: 'Duru Sans', sans-serif;
+	font-weight: 700;
 }
 
 .playlist_item_tracks_cd {

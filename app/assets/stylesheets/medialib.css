@@ -55,6 +55,8 @@
 }
 
 .album_item {
+	font-size: 80%;
+	font-weight: 700;
 	vertical-align: top;
 	padding-top: 10px;
 	padding-bottom: 10px;
