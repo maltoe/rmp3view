@@ -202,7 +202,9 @@ Playlist.prototype.play = function() {
 	// Activate the new one.
 	var ci = this.current_item;
 	this.track_to_div(ci).addClass("playlist_item_tracks_item_playling");
-	player.play(this.items[ci.position - 1].cds[ci.cd - 1].tracks[ci.number - 1].id);
+	var album = this.items[ci.position - 1];
+	var track = album.cds[ci.cd - 1].tracks[ci.number - 1];
+	player.play(album.id, track.id);
 }
 
 Playlist.prototype.play_first = function() {

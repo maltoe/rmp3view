@@ -8,7 +8,7 @@ function Player() {
 	});
 }
 
-Player.prototype.play = function(trackid) {
+Player.prototype.play = function(albumid, trackid) {
 	if(!this.shown) {
 		var self = this;
 		$("#player_audio").fadeIn(function() {
@@ -16,6 +16,7 @@ Player.prototype.play = function(trackid) {
 		});
 	}
 
+	$("#info_cover").attr("src", "/covers/" + albumid);
 	this.audio.setAttribute("src", "/tracks/" + trackid);
 	this.audio.play();
 }

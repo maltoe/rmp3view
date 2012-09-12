@@ -19,6 +19,7 @@
 
 var pages = null;
 var player = null;
+var info = null;
 var playlist = null;
 var medialib = null;
 
@@ -26,11 +27,12 @@ $(document).ready(function() {
 
 	// Initialization.
   player = new Player();
+  info = new Info();
   playlist = new Playlist();
   medialib = new Medialib();
 
   var slidesize = $(".page[data-page=0]").outerWidth(true);
-	pages = new Pages(slidesize, [playlist, medialib]);
+	pages = new Pages(slidesize, [info, playlist, medialib]);
 
 	$(".page").click(function() {
     pages.slide_to($(this).data("page"));

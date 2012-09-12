@@ -12,16 +12,15 @@
 <div id="frame">
 <div id="framecontainer">
 
-<!--
 	<div class="page" data-page="0">
-		<a href="#" id="recreate_overlay_show">Re-create media database.</a>	
-	</div>
--->
-	<div class="page" data-page="0">
-		<%= render :partial => "playlist/page" %>
+		<%= render :partial => "info/page" %>
 	</div>
 
 	<div class="page" data-page="1">
+		<%= render :partial => "playlist/page" %>
+	</div>
+
+	<div class="page" data-page="2">
 		<%= render :partial => "medialib/page" %>
 	</div>
 
