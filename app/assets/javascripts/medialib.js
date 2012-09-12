@@ -120,22 +120,23 @@ Medialib.prototype.move_selection = function(xoffset, yoffset) {
 		};
 	}
 
-	if((nsi.colid >= 0) &&
-		 (nsi.colid <= 3) &&
-		 (nsi.rowid >= 0) &&
-		 (nsi.rowid < this.items.rows.length)) {
+	if((nsi.rowid >= 0) &&
+		(nsi.rowid < this.items.rows.length) &&
+		(nsi.colid >= 0) &&
+		(nsi.colid < this.items.rows[nsi.rowid].albums.length)) {
+		// Move selection.
 		this.selected_item = nsi;
 		this.selection_update();
+	
+		// Scroll around.
+		var itemtd = this.item_to_td(this.selected_item);
+		var item_top = itemtd.position().top;
+		var item_outerheight = itemtd.outerHeight();
+		var jsppane_top = this.scrollpane.find(".jspPane").position().top;
+		var jsp_height = this.scrollpane.height();
+		if(item_top + item_outerheight > jsp_height - jsppane_top)
+			this.scrollpane.data("jsp").scrollToY(item_top);
+		else if(item_top < -jsppane_top)
+			this.scrollpane.data("jsp").scrollToY(item_top - jsp_height + item_outerheight);
 	}
-
-	// Scroll around.
-	var itemtd = this.item_to_td(this.selected_item);
-	var item_top = itemtd.position().top;
-	var item_outerheight = itemtd.outerHeight();
-	var jsppane_top = this.scrollpane.find(".jspPane").position().top;
-	var jsp_height = this.scrollpane.height();
-	if(item_top + item_outerheight > jsp_height - jsppane_top)
-		this.scrollpane.data("jsp").scrollToY(item_top);
-	else if(item_top < -jsppane_top)
-		this.scrollpane.data("jsp").scrollToY(item_top - jsp_height + item_outerheight);
 }
