@@ -1,3 +1,7 @@
+/*
+ *= require delete_button
+ */
+
 #playlist_menu {
 	/*margin-left: 20px;*/
 	height: 20px;
@@ -70,8 +74,8 @@
 
 .playlist_item_delete_button {
 	float: right;
-	width: 32px;
-	height: 32px;
+	width: 2em;
+	height: 2em;
 	cursor: pointer;
 }
 

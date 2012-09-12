@@ -1,0 +1,29 @@
+.delete_button {
+    position: relative;
+    width: 2em;
+    height: 2em;
+    background-color: #777;
+    border-radius: 2em;
+    box-shadow: 0 0 0.2em 0.15em #aaa;
+}
+
+.delete_button_bottomtop {
+    position: absolute;
+    top: 0.4em;
+    left: 0.875em;
+    width: 0.25em;
+    height: 1.2em;
+    background-color: #eee;
+    -webkit-transform: rotate(45deg);
+}
+
+.delete_button_topbottom {
+    position: absolute;
+    top: 0.875em;
+    left: 0.4em;
+    width: 1.2em;
+    height: 0.25em;
+    background-color: #eee;
+    -webkit-transform: rotate(45deg);
+}
+​

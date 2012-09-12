@@ -1,4 +1,5 @@
 //= require handlebars
+//= require delete_button
 
 /*
  * Remember that everything on the Playlist side is 1-indexed;
@@ -82,6 +83,7 @@ Playlist.prototype.append = function(item) {
 	});
 
 	var delete_btn = $(".playlist_item[data-position='" + item.position + "'] .playlist_item_delete_button");
+	delete_btn.delete_button();
 	delete_btn.click(function() {
 		$.ajax({
 			url: '/playlist/delete',
