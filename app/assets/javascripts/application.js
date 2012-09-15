@@ -15,9 +15,7 @@
 //= require jquery.ui.dialog
 //= require_tree .
 //= require recreate
-//= require pages
 
-var pages = null;
 var player = null;
 var info = null;
 var playlist = null;
@@ -31,10 +29,4 @@ $(document).ready(function() {
   playlist = new Playlist();
   medialib = new Medialib();
 
-  var slidesize = $(".page[data-page=0]").outerWidth(true);
-	pages = new Pages(slidesize, [info, playlist, medialib]);
-
-	$(".page").click(function() {
-    pages.slide_to($(this).data("page"));
-  });
 });

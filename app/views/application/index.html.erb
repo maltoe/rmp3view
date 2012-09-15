@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Rmp3view</title>
+
+	<meta charset="utf-8">
+	<title>rmp3view</title>
+
   <%= stylesheet_link_tag    "application", :media => "all" %>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<div id="frame">
-<div id="framecontainer">
-
-	<div class="page" data-page="0">
+<div class="container">
+	<div class="sixteen columns">
 		<%= render :partial => "info/page" %>
 	</div>
 
-	<div class="page" data-page="1">
-		<%= render :partial => "playlist/page" %>
+	<div class="sixteen columns">
+		<!--<div class="row">-->
+			<div class="six columns alpha">
+				<%= render :partial => "playlist/page" %>
+			</div>
+			<div class="ten columns omega">
+				<%= render :partial => "medialib/page" %>
+			</div>
+		<!--</div>-->
 	</div>
-
-	<div class="page" data-page="2">
-		<%= render :partial => "medialib/page" %>
-	</div>
-
 </div>
-</div>
-
 <footer>
 	<%= render :partial => "player/page" %>
 </footer>
