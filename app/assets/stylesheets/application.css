@@ -65,18 +65,18 @@ footer .controls input {
 }
 
 #recreation_overlay {
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	height: 100%;
 	width: 100%;
 	display: none;
-	opacity: 0.8;
-	background-color: #666;
+	background-color: rgba(96, 96, 96, 0.8);
 	text-align: center;
+	vertical-align: middle;
+	z-index: 1000;
 }
 
 #recreation_overlay_text {
 	font-size: 200%;
-	top: 50%;
 }

@@ -15,10 +15,10 @@ class MedialibController < ApplicationController
 
     if params.has_key? :letter
       if params[:letter] == "123"
-        @albums = Album.where("upper(artist) NOT GLOB '[A-Z]*'")
+        @albums = Album.where("upper(artist) NOT GLOB '[A-Z]*'").order("artist ASC")
       else
         l = params[:letter] + "%"
-        @albums = Album.where("upper(artist) LIKE ?", l)
+        @albums = Album.where("upper(artist) LIKE ?", l).order("artist ASC")
       end
       return render :update
     end

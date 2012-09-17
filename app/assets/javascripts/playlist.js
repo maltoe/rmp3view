@@ -19,28 +19,28 @@ function Playlist() {
 
 	var self = this;
 	this.playlist.keydown(function(evt) {
+		evt.preventDefault();
+
     var code = evt.keyCode;
     if(code == 81) {// Q
     	self.append_to_qlist();
-    	return false;
     } else if(code == 38) { // UP
     	self.move_selection(-1, 1);
-    	return false;
     } else if(code == 33) { // PAGE UP
     	self.move_selection(-1, 5);
-    	return false;
     } else if(code == 40) { // DOWN
     	self.move_selection(1, 1);
-    	return false;
     } else if(code == 34) { // PAGE DOWN
     	self.move_selection(1, 5);
-    	return false;
     } else if(code == 13) {  // RETURN
     	self.current_item = self.selected_item;
     	self.track_to_div(self.current_item).css('webkitAnimationName', 'playlist_item_tracks_activated');
     	self.play();
-    	return false;
     }
+  });
+
+  this.playlist.focus(function() {
+  	self.move_selection(1, 0);
   });
 
   $("#clear_button").click(function() {
