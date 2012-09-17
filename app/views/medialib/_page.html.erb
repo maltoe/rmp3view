@@ -16,25 +16,13 @@
 	{{/each}}
 </script>
 
-<div id="medialib_container">
-	<div id="searchbar">
-		<%= form_tag("/medialib/search", :remote => "true", :id => "search_keyword") do %>
-		  <%= label_tag(:keyword, "Search:") %>
-		  <%= text_field_tag(:keyword) %>
-		  <%= submit_tag("Go!") %>
-		<% end %>
-		<%=  form_tag("/medialib/random?limit=50", :remote => "true", :id => "search_random") do %>
-			<%= submit_tag("Random Fifty!") %>
-		<% end%>
-	</div>
-	<div id="tagcloud_container">
-		<div id="tagcloud"></div>
-	</div>
-	<div id="letterbar">
-		<span class="letterbar_letter" data-letter="123">123</span>
-		<% ('A'..'Z').each do |letter| %>
-			<span class="letterbar_letter" data-letter="<%= letter %>"><%= letter %></span>
-		<% end %>
-	</div>
-	<table id="albumlist" tabindex="1"></table>
+<div id="tagcloud_container">
+	<div id="tagcloud"></div>
 </div>
+<div id="letterbar">
+	<span class="letterbar_letter" data-letter="123">123</span>
+	<% ('A'..'Z').each do |letter| %>
+		<span class="letterbar_letter" data-letter="<%= letter %>"><%= letter %></span>
+	<% end %>
+</div>
+<table id="albumlist" tabindex="1"></table>

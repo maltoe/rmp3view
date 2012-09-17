@@ -6,9 +6,9 @@
 	<title>rmp3view</title>
 
   <%= stylesheet_link_tag    "application", :media => "all" %>
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  
 </head>
 <body>
 
@@ -30,12 +30,18 @@
 
 <footer>
 	<div class="container">
-		<div class="six columns alpha">
-			<%= render :partial => "player/page" %>
-		</div>
-		<div class="ten columns omega">
+		<div class="two columns alpha">
 			<a href="#to_playlist" class="navi_link">Playlist</a>
 			<a href="#to_medialib" class="navi_link">Medialib</a>
+		</div>
+		<div class="fourteen columns omega">
+			<div class="six columns alpha">
+				<%= render :partial => "player/controls" %>
+			</div>
+			<div class="eight columns omega">
+				<%= render :partial => "playlist/controls" %>
+				<!--<%= render :partial => "medialib/controls" %>-->
+			</div>
 		</div>
 	</div>
 </footer>
@@ -53,11 +59,5 @@
 	<img src="/ajax-loader.gif" />
 </div>
 
-
-
 </body>
 </html>
-
-
-
-

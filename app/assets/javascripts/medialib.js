@@ -24,15 +24,20 @@ function Medialib() {
     var code = evt.keyCode;
     if(code == 37) { // LEFT
     	self.move_selection(-1, 0);
+    	return false;
     } else if(code == 38) { // UP
     	self.move_selection(0, -1);
+    	return false;
     } else if(code == 39) { // RIGHT
     	self.move_selection(1, 0);
+    	return false;
     } else if(code == 40) { // DOWN
     	self.move_selection(0, 1);
+    	return false;
     } else if(code == 13) {  // RETURN
     	if(self.selected_item != null)
     		self.add_to_playlist(self.selected_item);
+    	return false;
     }
   });
 
@@ -116,5 +121,8 @@ Medialib.prototype.move_selection = function(xoffset, yoffset) {
 		// Move selection.
 		this.selected_item = nsi;
 		this.selection_update();
+
+		// Scroll around.
+		scroll_around(this.item_to_td(nsi));
 	}
 }

@@ -19,24 +19,24 @@
 body {
 	-webkit-user-select: none;
 	margin-bottom: 5em;
-	/*font-family: 'Open Sans', sans-serif;*/
 }
 
 footer {
 	position: fixed;
 	bottom: 0;
 	width: 100%;
-	text-align: center;
 	background-color: rgba(0, 0, 0, 0.5);
 	z-index: 3;	
 }
 
-footer audio {
-	vertical-align: text-bottom;
-}
-
 footer a.navi_link {
 	color: #fff;
+	text-decoration: none;
+}
+
+footer .controls button {
+	float: left;
+	margin-bottom: 0;
 }
 
 #recreate_confirm {

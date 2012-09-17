@@ -20,21 +20,34 @@ function Playlist() {
 	var self = this;
 	this.playlist.keydown(function(evt) {
     var code = evt.keyCode;
-    if(code == 81) // Q
+    if(code == 81) {// Q
     	self.append_to_qlist();
-    else if(code == 38) { // UP
+    	return false;
+    } else if(code == 38) { // UP
     	self.move_selection(-1, 1);
+    	return false;
     } else if(code == 33) { // PAGE UP
     	self.move_selection(-1, 5);
+    	return false;
     } else if(code == 40) { // DOWN
     	self.move_selection(1, 1);
+    	return false;
     } else if(code == 34) { // PAGE DOWN
     	self.move_selection(1, 5);
+    	return false;
     } else if(code == 13) {  // RETURN
     	self.current_item = self.selected_item;
     	self.track_to_div(self.current_item).css('webkitAnimationName', 'playlist_item_tracks_activated');
     	self.play();
+    	return false;
     }
+  });
+
+  $("#clear_button").click(function() {
+  	$.ajax({
+  		url: '/playlist/delete',
+  		dataType: 'script'
+  	});
   });
 
   $("#next_button").click(function() {
@@ -358,4 +371,7 @@ Playlist.prototype.move_selection = function(direction, offset) {
 	$(".playlist_item_tracks_item_selected").removeClass("playlist_item_tracks_item_selected");
 	var track = this.track_to_div(si);
 	track.addClass("playlist_item_tracks_item_selected");
+
+	// Scroll around.
+	scroll_around($(".playlist_item[data-position='" + si.position + "']"));
 }
