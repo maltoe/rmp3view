@@ -41,6 +41,43 @@ function Medialib() {
     }
   });
 
+  $("#random_button").click(function() {
+  	$.ajax({
+  		url: '/medialib/random?limit=50',
+  		dataType: 'script'
+  	});
+  });
+
+  $("#search_input").keydown(function(evt) {
+  	if(evt.keyCode == 13) {
+  		$.ajax({
+  			url: '/medialib/search',
+  			data: { keyword: $(this).val() },
+  			dataType: 'script'
+  		});
+  		return false;
+  	}
+  });
+
+  $("#recreate_button").click(function() {
+		$( "#recreate_confirm" ).dialog({
+			resizable: false,
+			height: 210,
+			width: 450,
+			modal: true,
+			buttons: {
+				"Yep, I'm sure!": function() {
+					$("#recreation_overlay").fadeIn();
+					$(this).dialog("close");
+					call_recreate();
+				},
+				Cancel: function() {
+					$(this).dialog("close");
+				}
+			}
+		});
+	});
+
 	// Load toptags.
 	$.ajax({
 		url: '/medialib/toptags',

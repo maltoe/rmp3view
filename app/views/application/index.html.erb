@@ -8,21 +8,21 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  
+
 </head>
 <body>
 
 <div class="container">
 
-	<a name="to_playlist"></a>
-	<h1>The Playlist</h1>
-	<div class="sixteen columns">
+	<div class="sixteen columns" id="playlist_container">
+		<a name="to_playlist"></a>
+		<h1>The Playlist</h1>
 		<%= render :partial => "playlist/page" %>
 	</div>
 
-	<a name="to_medialib"></a>
-	<h1>The Medialib</h1>
-	<div class="sixteen columns">
+	<div class="sixteen columns" id="medialib_container">
+		<a name="to_medialib"></a>
+		<h1>The Medialib</h1>
 		<%= render :partial => "medialib/page" %>
 	</div>
 
@@ -38,14 +38,17 @@
 			<div class="six columns alpha">
 				<%= render :partial => "player/controls" %>
 			</div>
-			<div class="eight columns omega">
-				<%= render :partial => "playlist/controls" %>
-				<!--<%= render :partial => "medialib/controls" %>-->
+			<div class="controls_container eight columns omega">
+				<div class="controls" id="medialib_controls">
+					<%= render :partial => "medialib/controls" %>
+				</div>
+				<div class="controls" id="playlist_controls">
+					<%= render :partial => "playlist/controls" %>
+				</div>
 			</div>
 		</div>
 	</div>
 </footer>
-
 
 <div id="recreate_confirm" title="Re-create the media database?">
 	<p>
