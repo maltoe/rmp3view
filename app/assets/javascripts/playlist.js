@@ -71,7 +71,7 @@ Playlist.prototype.append = function(item) {
 		$.ajax({
 			url: '/playlist/delete',
 			data: { 
-				position: $(this).parent().parent().parent().get(0).dataset["position"]
+				position: $(this).parent().get(0).dataset["position"]
 			},
 			dataType: 'script'
 		});

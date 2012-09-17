@@ -16,31 +16,27 @@
  *= require_tree .
  */
 
-html {
-  height:100%;
-}
-
 body {
-
 	-webkit-user-select: none;
+	margin-bottom: 5em;
 	/*font-family: 'Open Sans', sans-serif;*/
 }
 
-#header {
+footer {
 	position: fixed;
-	top: 0;
+	bottom: 0;
 	width: 100%;
 	text-align: center;
-	background: #3A1E39;
-	z-index: 3;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 3;	
 }
 
-#header a {
+footer audio {
+	vertical-align: text-bottom;
+}
+
+footer a.navi_link {
 	color: #fff;
-}
-
-#content {
-	margin-top: 3em;
 }
 
 #recreate_confirm {

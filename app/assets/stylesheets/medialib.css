@@ -45,6 +45,17 @@
 	/* background-color: #ccc; */
 }
 
+#letterbar {
+	width: 100%;
+	text-align: center;
+}
+
+#letterbar span {
+	cursor: pointer;
+	font-size: 140%;
+	font-weight: bold;
+}
+
 /*
 #medialib_container {
 	position: relative;
@@ -68,19 +79,7 @@
 
 
 
-#letterbar {
-	width: 100%;
-	text-align: center;
-  background: -webkit-gradient(linear, left top, left bottom, from(#424), to(#244));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
 
-#letterbar span {
-	cursor: pointer;
-	font-size: 140%;
-	font-weight: bold;
-}
 
 
 */
