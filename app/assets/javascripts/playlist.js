@@ -1,4 +1,3 @@
-//= require handlebars
 //= require delete_button
 
 /*
@@ -10,7 +9,6 @@
 function Playlist() {
 	// Initialization.
 	this.playlist = $("#playlist");
-	this.scrollpane = $("#playlist_scrollpane");
 	this.items = [];
 	this.current_item = null;
 	this.selected_item = null;
@@ -19,18 +17,7 @@ function Playlist() {
 	var playlist_item_template_src   = $("#playlist_item_template").html();
 	this.playlist_item_template = Handlebars.compile(playlist_item_template_src);
 
-	this.scrollpane.jScrollPane({
-		enableKeyboardNavigation: false
-	});
-
 	var self = this;
-
-	// Don't know why, but reinitialisation does not happen
-	// correctly on window load.
-	setTimeout(function() {
-		self.reinitialise_scrollpane();
-	}, 2000);
-
 	this.playlist.keydown(function(evt) {
     var code = evt.keyCode;
     if(code == 81) // Q
@@ -62,10 +49,6 @@ function Playlist() {
 
 Playlist.prototype.set_focus = function() {
 	this.playlist.focus();
-}
-
-Playlist.prototype.reinitialise_scrollpane = function() {
-	this.scrollpane.data("jsp").reinitialise({"mouseWheelSpeed": 50});
 }
 
 Playlist.prototype.append = function(item) {
@@ -105,10 +88,6 @@ Playlist.prototype.append = function(item) {
 		$(this).css('webkitAnimationName', 'playlist_item_tracks_activated');
 		self.play();
 	});
-
-	$(".playlist_item[data-position='" + item.position + "'] .playlist_item_album_thumbnail").load(function() {
-		self.reinitialise_scrollpane();
-	});
 }
 
 Playlist.prototype.div_to_track = function(div) {
@@ -130,8 +109,6 @@ Playlist.prototype.delete = function(position) {
 	var self = this;
 	$(".playlist_item[data-position='" + position + "']").fadeOut(function() {
 		$(this).remove();
-
-		self.reinitialise_scrollpane();
 
 		// Update items.
 		self.items.splice(position - 1, 1);
@@ -190,7 +167,6 @@ Playlist.prototype.delete = function(position) {
 
 Playlist.prototype.clear = function() {
 	$("#playlist").html("");
-	this.scrollpane.data("jsp").reinitialise({"mouseWheelSpeed": 50});
 	this.items = [];
 	this.current_item = null;
 }
@@ -382,15 +358,4 @@ Playlist.prototype.move_selection = function(direction, offset) {
 	$(".playlist_item_tracks_item_selected").removeClass("playlist_item_tracks_item_selected");
 	var track = this.track_to_div(si);
 	track.addClass("playlist_item_tracks_item_selected");
-
-	// Update scrollpane.
-	var album = $(".playlist_item[data-position='" + si.position + "']");
-	var album_outerheight = album.outerHeight();
-	var album_top = album.position().top;
-	var jsppane_top = $("#playlist_scrollpane .jspPane").position().top;
-	var jsppane_height = this.scrollpane.height();
-	if(album_top + album_outerheight > jsppane_height - jsppane_top)
-		this.scrollpane.data("jsp").scrollToY(album_top);
-	else if(album_top < -jsppane_top)
-		this.scrollpane.data("jsp").scrollToY(album_top - jsppane_height + album_outerheight);
 }

@@ -42,11 +42,6 @@
 	font-weight: bold;
 }
 
-#albumlist_scrollpane {
-	height: 575px;
-	outline: none;
-}
-
 #albumlist {
 	width: 100%;
 	padding: 5px;

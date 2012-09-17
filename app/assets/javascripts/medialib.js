@@ -1,22 +1,14 @@
 //= require jqcloud
-//= require jquery.jscrollpane
-//= require jquery.mousewheel
 
 function Medialib() {
 	// Initialization.
 	this.albumlist = $("#albumlist");
-	this.scrollpane = $("#albumlist_scrollpane");
 	this.items = null;
 	this.selected_item = null;
 
 	var albumlist_template_src   = $("#albumlist_template").html();
 	this.albumlist_template = Handlebars.compile(albumlist_template_src);
 
-	this.scrollpane.jScrollPane({
-		enableKeyboardNavigation: false,
-		maintainPosition: false
-	});
-	
 	// Event handlers.
 
 	$(".letterbar_letter").click(function() {
@@ -69,9 +61,6 @@ Medialib.prototype.albumlist_update = function(items) {
 		self.selected_item = self.td_to_item(this);
 		self.selection_update();
 	});
-
-	// Refresh jScrollPane.
-	this.scrollpane.data("jsp").reinitialise({"mouseWheelSpeed": 50});
 }
 
 Medialib.prototype.selection_update = function() {
@@ -127,16 +116,5 @@ Medialib.prototype.move_selection = function(xoffset, yoffset) {
 		// Move selection.
 		this.selected_item = nsi;
 		this.selection_update();
-	
-		// Scroll around.
-		var itemtd = this.item_to_td(this.selected_item);
-		var item_top = itemtd.position().top;
-		var item_outerheight = itemtd.outerHeight();
-		var jsppane_top = this.scrollpane.find(".jspPane").position().top;
-		var jsp_height = this.scrollpane.height();
-		if(item_top + item_outerheight > jsp_height - jsppane_top)
-			this.scrollpane.data("jsp").scrollToY(item_top);
-		else if(item_top < -jsppane_top)
-			this.scrollpane.data("jsp").scrollToY(item_top - jsp_height + item_outerheight);
 	}
 }

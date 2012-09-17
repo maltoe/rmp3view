@@ -15,6 +15,7 @@
 //= require jquery.ui.dialog
 //= require_tree .
 //= require recreate
+//= require handlebars
 
 var player = null;
 var info = null;

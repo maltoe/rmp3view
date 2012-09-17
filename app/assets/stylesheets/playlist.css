@@ -8,11 +8,6 @@
 	width: 100%;
 }
 
-#playlist_scrollpane {
-	height: 785px;
-	outline: none;
-}
-
 #playlist {
 	outline: none;
 	padding: 10px;
