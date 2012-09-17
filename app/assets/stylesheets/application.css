@@ -8,12 +8,12 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
- *= require_tree .
- *= require jquery.ui.dialog
  *= require base
  *= require layout
  *= require skeleton
+ *= require jquery.ui.dialog
+ *= require_self
+ *= require_tree .
  */
 
 html {
@@ -26,14 +26,21 @@ body {
 	/*font-family: 'Open Sans', sans-serif;*/
 }
 
-footer {
+#header {
 	position: fixed;
-	bottom: 1em;
+	top: 0;
+	width: 100%;
 	text-align: center;
+	background: #3A1E39;
+	z-index: 3;
 }
 
-footer audio {
-	display: none;
+#header a {
+	color: #fff;
+}
+
+#content {
+	margin-top: 3em;
 }
 
 #recreate_confirm {

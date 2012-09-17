@@ -1,22 +1,11 @@
 div.jqcloud {
-  font-family: "Helvetica", "Arial", sans-serif;
-  color: #000;
   overflow: hidden;
   position: relative;
 }
 
 div.jqcloud span {
-  padding: 0;
   cursor: pointer;
   -webkit-user-select: none;
-}
-
-div.jqcloud span:nth-child(odd) {
-  color: #424;
-}
-
-div.jqcloud span:nth-child(even) {
-  color: #244;
 }
 
 div.jqcloud span.w10 {

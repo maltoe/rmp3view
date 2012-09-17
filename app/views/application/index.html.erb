@@ -11,16 +11,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="container">
-	<div class="sixteen columns">
-				<%= render :partial => "playlist/page" %>
-				<%= render :partial => "medialib/page" %>
-				<%= render :partial => "info/page" %>
+
+<div id="header">
+	<%= render :partial => "player/page" %>
+	<a href="#to_playlist">Playlist</a>
+	<a href="#to_medialib">Medialib</a>
+</div>
+
+<div id="content">
+	<div class="container">
+		<a name="to_playlist"></a>
+		<div class="sixteen columns">
+			<%= render :partial => "playlist/page" %>
+		</div>
+		<a name="to_medialib"></a>
+		<div class="sixteen columns">
+			<%= render :partial => "medialib/page" %>
+		</div>
 	</div>
 </div>
-<footer>
-	<%= render :partial => "player/page" %>
-</footer>
 
 <div id="recreate_confirm" title="Re-create the media database?">
 	<p>

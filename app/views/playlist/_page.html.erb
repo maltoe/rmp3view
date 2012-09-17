@@ -5,28 +5,27 @@
 	html escaped.
 -->
 <script id="playlist_item_template" type="text/x-handlebars-template">
-<div class="playlist_item" data-position="{{{position}}}">
-	<div class="playlist_item_album_container">
+<div class="row playlist_item" data-position="{{{position}}}">
+	<div class="playlist_item_delete_button"></div>
+	<div class="four columns alpha playlist_item_album_container">
 		<div class="playlist_item_album">
 			<img class="playlist_item_album_thumbnail" src="{{{imgurl}}}" />
 			<div class="playlist_item_album_info">
-				<div class="playlist_item_album_info_title">
-					<span>{{{title}}}</span> ({{{year}}})
-				</div>
+				<div class="playlist_item_album_info_title">{{{title}}}</div>
 				<div class="playlist_item_album_info_artist">{{{artist}}}</div>
+				<div class="playlist_item_album_info_year">{{{year}}}</div>
 			</div>
-			<div class="playlist_item_delete_button"></div>
 		</div>
 	</div>
-	<div class="playlist_item_tracks_container">
+	<div class="twelve columns omega playlist_item_tracks_container">
 		<div class="playlist_item_tracks">
 			{{#each cds}}
 				<div class="playlist_item_tracks_cd" data-cd={{{number}}}>
 					{{#each tracks}}
-					<div class="playlist_item_tracks_item" data-number={{{number}}}>
+					<div class="row playlist_item_tracks_item" data-number={{{number}}}>
+						<div class="one column alpha playlist_item_tracks_item_number">{{{number}}}</div>
+						<div class="eleven columns omega playlist_item_tracks_item_name">{{{title}}} <span class="playlist_item_tracks_item_by">by {{{artist}}}</span></div>
 						<div class="playlist_item_tracks_item_qpos"></div>
-						<div class="playlist_item_tracks_item_number">{{{number}}}</div>
-						<div class="playlist_item_tracks_item_name">{{{title}}} <span class="playlist_item_tracks_item_by">by {{{artist}}}</span></div>
 					</div>
 					{{/each}}
 				</div>	
@@ -36,10 +35,9 @@
 </div>
 </script>
 
-<div id="playlist_container">
-	<div id="playlist_menu">
-		<%= link_to "Clear", { :controller => "playlist", :action => "delete" }, :remote => true %>
-		<a id="next_button" href="#">Next</a>
-	</div>
-	<div id="playlist" tabindex="0"></div>
+<div id="playlist" tabindex="0"></div>
+
+<div class="controls" id="playlist_controls">
+	<%= link_to "Clear", { :controller => "playlist", :action => "delete" }, :remote => true %>
+	<a id="next_button" href="#">Next</a>
 </div>
