@@ -78,13 +78,15 @@
 	100% { margin-left: 0; }
 }
 
-.playlist_item_tracks_item:nth-child(even) {
+.playlist_item_tracks_item:nth-child(odd) {
 	background-color: #eee;
 }
 
+/*
 .playlist_item_tracks_item:nth-child(odd) {
 	background-color: #ddd;
 }
+*/
 
 .playlist_item_tracks_item.playlist_item_tracks_item_selected {
 	background-color: #777;
