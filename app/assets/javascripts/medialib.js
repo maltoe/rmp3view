@@ -75,10 +75,6 @@ function Medialib() {
 		});
 	});
 
-  this.albumlist.focus(function() {
-  	self.move_selection(0, 0);
-  });
-
 	// Load toptags.
 	$.ajax({
 		url: '/medialib/toptags',

@@ -39,10 +39,6 @@ function Playlist() {
     }
   });
 
-  this.playlist.focus(function() {
-  	self.move_selection(1, 0);
-  });
-
   $("#clear_button").click(function() {
   	$.ajax({
   		url: '/playlist/delete',
