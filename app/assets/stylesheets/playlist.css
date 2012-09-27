@@ -43,6 +43,7 @@
 .playlist_item_album_thumbnail {
 	width: 8em;
 	height: 8em;
+	box-shadow: -5px 5px 5px #888;
 }
 
 .playlist_item_album_info_title {
